@@ -231,16 +231,16 @@ Supportability (Unterstützbarkeit)::
 
 Formal ein UML Sequenzdiagram. Interaktionen der Akteure mit dem System
 
-[cols="3*a"]
+[cols="6a,4a", frame="none"]
 |===
+.2+|image:SSD.png[Systemsequenzdiagram]
 |image:SSD_Grundelemente.png[Grundelemente Systemsequenzdiagram]
 |image:SSD_Beispiel.png[Beispiel Systemsequenzdiagram]
-|image:SSD.png[Systemsequenzdiagram]
 |===
 
 ==== Systemoperationen
 
-[cols="65a,35a"]
+[cols="65a,35a", frame="none", grid="none"]
 |===
 |
 * Jedes Systemereignis wird von einer Systemoperation bheandelt.
@@ -265,7 +265,223 @@ Wann Operation Contracts?::
 
 == Domänenmodellierung
 
+=== Domänenmodell
+
+[cols="4a,3a,3a"]
+|===
+|UML Klassendiagram |Aggregation | Komposition
+
+|image:UML.png[UML]
+|image:Aggregation.png[Aggregation]
+|image:Komposition.png[Komposition]
+|===
+
+image:Domanenmodel.png[Domänenmodel, 75%]
+
+
+[cols="2*a"]
+|===
+|
+.Tipp
+image:Tip1.png[Tip]
+|image:Tip2.png[Tip]
+|
+.Generalisierung
+image:Generalisierung.png[Generalisierung]
+|
+.Zustand
+image:Zustand.png[Zustand]
+|
+.Rollen
+image:Rollen.png[Rollen]
+|
+.Assozations Klasse
+image:AssozationsKlasse.png[Assozations-Klasse]
+
+|===
+
 == Softwarearchitektur und Design
+
+[grid="none", frame="none"]
+|===
+|image:GrundelementeUML.png[Grundelemente UML] | image:UMLHierarchie.png[UML Hierarchie]
+|===
+
+=== Architekturpattern
+
+image:ArchitekturPattern.png[Architektur Pattern, 50%]
+
+=== Paketdiagram
+
+image:Paketdiagram.png[Paketdiagram, 50%]
+
+=== Sequenzdiagram
+
+image:Sequenzdiagram.png[Sequenzdiagram, 75%]
+
+[grid="none", frame="none"]
+|===
+|image:Sequenzdiagram1.png[Sequenzdiagram] | image:Sequenzdiagram2.png[Sequenzdiagram]
+|===
+
+=== Klassendiagram
+
+image:Klassendiagram.png[Klassendiagram, 75%]
+
+=== Kommunikationsdiagram
+
+image:Kommunikationsdiagram.png[Kommunikationsdiagram, 75%]
+
+=== Zustandsdiagram
+
+image:Zustandsdiagram.png[Zustandsdiagram, 75%]
+
+=== Aktivitätsdiagram
+
+image:Aktivitätsdiagram.png[Aktivitätsdiagram, 75%]
+
+=== GRASP
+
+GRASP (General Responsibility Assignment Software Patterns) bezeichnet eine Menge von grundlegenden Prinzipen bzw. Pattern, mit denen die Zuständigkeit bestimmter Klassen objektorientierter Systeme festgelegt wird.
+
+==== Information Expert
+
+[horizontal]
+Problem:: Gibt es ein grundlegendes Prinzip, um Objekten Verantwortlichkeiten zuzuweisen?
+Lösung:: Weisen Sie die Verantwortlichkeit einer Klasse zu, die über die erforderlichen Informationen verfügt, um sie zu erfüllen.
+Alternativen:: Low Coupling oder High Cohesion erfordern andere Lösung, nämlich eine «künstliche» Klasse.
+
+[frame="none", cols="~,~"]
+|===
+|image:InformationExpert1.png[Information Expert] |image:InformationExpert2.png[Information Expert]
+|===
+
+==== Creator
+
+[horizontal]
+Problem:: Wer soll dafür Verantwortlich sein, eine neue Instanz (Objekt) einer Klasse zu erzeugen?
+Lösung:: Weisen Sie einer Klasse A die Verantwortlichkeit zu, eine Instanz der Klasse B zu erstellen, wenn eine der folgenden Aussagen wahr ist (je mehr desto besser):
+* A eine Aggregation oder ein Kompositum von B ist
+* A registriert oder erfasst B-Objekte
+* A arbeitet eng mit B-Objekten zusammen oder hat ein enge Kopplung 
+* A verfügt über Initialisierungsdaten für B (d.h. A ist Experte bezüglich Erzeugung von B)
+Alternativen:: Factory Pattern, Dependency Injection (DI) 
+
+[frame="none", cols="~,~"]
+|===
+|image:Creator1.png[Creator] |image:Creator2.png[Creator]
+|===
+
+==== Controller
+
+[horizontal]
+Problem:: Welches erste Objekt jenseits der UI-Schicht empfängt und koordiniert («kontrolliert») eine Systemoperation?
+Lösung:: Weisen Sie Verantwortlichkeit einer Klasse zu, die eine der folgenden Bedingungen erfüllt:
+Variante 1::: Fassaden ControllerSie repräsentiert das «Root-Objekt», System bzw.  übergeordnetes System auf dem die Software läuft.
+Variante 2::: Use Case ControllerPro Use-Case-Szenario eine «künstliche» Klasse, in der die Systemoperation abläuft.
+Wichtig:: Controller macht selber nur wenig und delegiert fast alles! 
+
+[cols="~,~"]
+|===
+| Fassaden Controller | Use-Case-Controller
+
+|image:FassadenController.png[Fassaden Controller] |image:UseCaseController.png[UseCase Controller]
+|===
+
+Wenn ein Fassaden Controller eine zu geringe Kohäsion aufweist und zu gross wird (LOC), ist ein Use Case Controller zu präferieren!
+
+==== Low Coupling
+
+[horizontal]
+Problem:: Wie erreicht man eine geringe Abhängigkeit, wie begrenzt man die Auswirkungen von Änderungen und wie verbessert man die Wiederverwendbarkeit?
+* Kopplungist ein Mass für die gegenseitige Abhängigkeit von Elementen. Ein Element kann in diesem Kontext vieles bedeuten: Klassen, Subsysteme, Systeme, Systeme von Systemen. 
+* Eine Klasse mit einer hohen (oder starken) Kopplung ist von vielen anderen Klassen abhängig. 
+* Solche Klassen können unerwünscht sein; viele leiden unter den folgenden Problemen:
+** aufgrund von Änderungen in verbundenen Klassen lokale Änderungen nötig
+** schwieriger zu verstehen 
+** schwieriger wiederzuverwenden, weil für ihre Anwendung auch die Klassen vorhanden sein müssen, von denen sie abhängig sind
+Lösung:: Weisen Sie Verantwortlichkeiten so zu, dass die Kopplung gering bleibt. Bewerten Sie anhand dieses Prinzips mögliche Alternativen (vgl. das I in SOLID [3]).
+
+[frame="none", cols="~,~"]
+|===
+|image:LowCoupling1.png[[Low Coupling] |image:LowCoupling2.png[Low Coupling]
+|===
+
+==== High Coheson
+
+[horizontal]
+Problem:: Wie kann erreicht werden, dass Objekte fokussiert, verständlich und handhabbar bleiben und nebenbei Low Coupling unterstützen?
+* Im Sinne des Klassenentwurfs ist Kohäsion (oder spezieller funktionale Kohäsion) ein Mass für die Verwandtschaft und Fokussierung eines Elements. 
+* Ein Element mit eng verwandten Verantwortlichkeiten, das nur wenige Aufgaben erledigt, hat eine hohe Kohäsion (Elemente können Klassen, Subsysteme u.s.w. sein).
+* Eine Klasse mit geringer Kohäsion tut viele unzusammenhängende Dinge (vgl. S in SOLID [3]). 
+* Solche Klassen können unerwünscht sein; viele leiden unter den folgenden Problemen:
+** schwer zu verstehen
+** schwer wiederzuverwenden 
+** brüchig und instabil, sind laufend von Änderungen betroffen
+Lösung:: Weisen Sie Verantwortlichkeiten so zu, dass die Kohäsion hoch bleibt. Verwenden Sie dieses Kriterium, um alternativen zu bewerten.
+
+[frame="none", cols="~,~"]
+|===
+|image:HighCohesion1.png[High Cohesion] |image:HighCohesion2.png[High Cohesion]
+|===
+
+==== Polymorphism / Vererbung
+
+[horizontal]
+Problem:: Wie werden typabhängige Alternativen gehandhabt?
+* Sie müssten viele if-then-else oder eine grosse switch-case Anweisungen in derselben Methode programmieren.
+* Sie möchten ein bestimmtes Verhalten (z.B. Einsatz eines externen Dienstes) konfigurierbar machen.
+Lösung:: Weisen Sie das Verhalten mit polymorphen Operationen der Klasse zu, dessen Verhalten variiert. 
+* Dies ist eine der grundlegenden Ideen in der objektorientierten Programmierung (Generalisierung / Spezialisierung).
+* Achtung: Überprüfen Sie, ob es sich tatsächlich auch um eine «isa» Beziehung zwischen Superklasse und Subklassen handelt. Dabei sollte auch das sogenannte Liskov-Substitutions-Prinzip (vgl. L in SOLID [3]) eingehalten werden
+
+image:Polymorphismus.png[Polymorphismus, 50%] 
+
+==== Pure Fabrication
+
+[horizontal]
+Problem:: Welches Objekt sollte die Verantwortlichkeit haben, wenn Sie nicht gegen High Cohesionund Low Couplin goder andere Ziele verstossen wollen, aber die Lösungen, die beispielsweise vom Information Expert vorgeschlagen werden, nicht passen?
+* Viele Design-Klassen können direkt aus dem Fachbereich (Domänenmodell) abgeleitet werden und erfüllen das Low RepresentationalGap.
+* Aber es gibt auch viele Situationen, wo es Probleme mit einer geringen Kohäsion, einer starken Kopplung und einer geringen Wiederverwendung gibt, wenn die Verantwortlichkeiten der Klasse in der Domänenschicht zugewiesen wird.
+Lösung:: Weisen Sie einen hoch kohäsiven Satz von Verantwortlichkeiten einer künstlichen Hilfsklasse zu, die nicht ein Konzept des Problembereichs repräsentiert, sondern einfach erstellt wird, um eine hohe Kohäsion, eine geringe Kopplung oder eine bessere Wiederverwendbarkeit zu realisieren.
+
+[frame="none", cols="75,25"]
+|===
+|image:PureFabrication1.png[Pure Fabrication] |image:PureFabrication2.png[Pure Fabrication]
+|===
+
+==== Indirection
+
+[horizontal]
+Problem:: Wie soll ein Verantwortlichkeit zugewiesen werden, um eine direkte Kopplung zwischen zwei (oder mehr) Objekten zu vermeiden? Wie können Objekte entkoppelt werden, so dass die Kopplung geringer und das Wiederverwendungspotential grösser wird?
+Lösung:: Weisen Sie die Verantwortlichkeit einem zwischengeschalteten Objekt zu, das zwischen den anderen Komponenten oder Diensten vermittelt, so dass diese nicht direkt gekoppelt sind (vgl. das D in SOLID [3]). 
+* Der Vermittler schafft eine Indirektionzwischen den anderen Komponenten. 
+* Viele GoF Design Patterns wie Adapter, Bridge, Facade, Observer oder Mediator verwenden dieses Prinzip. 
+* Viele Indirections sind Pure Fabrications.
+Alternativen:: Protected Variations
+
+image:Indirection.png[Indirection, 75%]
+
+==== Protected Variations
+
+[horizontal]
+Problem:: Wie sollen Objekte, Subsysteme und Systeme entworfen werden, sodass Veränderungen und Instabilitäten in diesen Elementen keinen Einfluss auf andere Elemente haben?
+Lösung:: Identifizieren Sie die Punkte, and denen Veränderungen und Instabilitäten zu erwarten sind; weisen Sie Verantwortlichkeiten so zu, dass diese Punkte durch ein stabiles Interface eingekapselt werden (vgl. das O und D in SOLID [3]). * Dies ist ein sehr wichtiges, grundlegendes Prinzip des Softwaredesigns!
+* Es sollten zwischen folgenden Änderungspunkte unterschieden werden.
+** Variationspunkt: Veränderungen sind sicher (in Anforderung); Zwingend PV Konzepte einbauen
+** Entwicklungspunkt:Veränderungen sind nicht sicher, werden aber mit hoher Wahrscheinlichkeit eintreffen; sind nicht in Anforderungen enthalten
+* Spekulative Anwendungen sind aber zu vermeiden, da dies zu unnötiger Komplexität führt.
+* Es ist die «Kunst» des erfahrenen Designer, die richtigen Annahmen treffen!
+
+image:ProtectedVariations.png[ProtectedVariations, 75%]
+
+=== Design-Patterns (GoF-Patterns)
+
+=== Design-Klassendiagram (DCD)
+
+=== Paketdiagram & Schichten-Entwurfsmuster
+
+=== Interaktionsdiagramme
 
 == Implementation, Refactoring und Testing
 
