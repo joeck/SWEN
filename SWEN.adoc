@@ -5,6 +5,7 @@ Joël Plambeck <plambjoe@students.zhaw.ch>
 :sectnums:
 :sectnumlevels: 3 % sets numbering of header up to level 5
 :icons: font
+:imagesdir: img
 
 == Software Engineering
 
@@ -89,6 +90,7 @@ Ziel: Software entwickeln, welche 3 Anforderungen erfüllt
 |Mit dem System/Interaktion ist der Benutzer erfreut
 
 |===
+
 === Usability Anforderungen
 Anforderungsbereiche bezüglich Usabilty
 
@@ -103,7 +105,7 @@ Anforderungsbereiche bezüglich Usabilty
 === User-Centered Design (UCD)
 
 .User-Centered Design
-image::img/UCD.png[User-Centered Design diagram, 300, float="right"]
+image::UCD.png[User-Centered Design diagram, 300, float="right"]
 
 
 ==== User & Domain Research
@@ -121,7 +123,7 @@ Contextual Interview::
 User-Centered Design Process Artefakte:
 
 .Stakeholder Map
-image::img/Stakeholders.png[Stakeholder Diagram, 300, float="right"]
+image::Stakeholders.png[Stakeholder Diagram, 300, float="right"]
 
 [horizontal]
 Personas:: Fiktive Person, represäntiert bestimmte Benutzergruppe
@@ -133,12 +135,12 @@ Interaktionskonzepte:: Beschreibt die Interkation mit dem Benutzer
 Wireframes:: UI-Prototypen des Interaktionskonzept
 
 .User & Domain Research
-image::img/UDR.png[User & Domain Research Diagram, 300, float="right"]
+image::UDR.png[User & Domain Research Diagram, 300, float="right"]
 
 Fokusgruppen, Umfragen, Nutzungsauswertung, Desktop Research
 
 
-==== Requrements Analysis
+==== Requirements Analysis
 
 * Wann, wie und warum interagiert der Benutzer mit dem System
 * Was sind die wichtigsten Anforderungen an die Interaktion und das System an Benutzersicht
@@ -157,10 +159,125 @@ Fokusgruppen, Umfragen, Nutzungsauswertung, Desktop Research
 
 === Funktionale Anforderungen (mit Use-Cases)
 
-=== Use Cases
+=== Use-Cases
+
+[cols="2*a"]
+|===
+|Ausprägungen | Tests
+
+|
+Kurz (Brief UC)::
+* Titel + 1 Absatz
+* Standardablauf (keine Varianten, Problemfälle)
+Informell (Casual UC)::
+* Title + informelle Beschreibung (1-3 Absätze)
+* Beschreibt auch wichtige Varianten
+Vollständig (Fully dressed UC)::
+* Titel + alle Schritte und Varianten im Detail
+* Inklusive Infos über Vorbereitungen, Erfolgsgarantien etc.
+| 
+Boss-Test:: Falls ganzer Tag in UC investiert wird sollte Boss zufrieden sein.
+EBP-Test (Elementary Business Proc.):: Eine Aufgabe die von einer Person an einem Ort zu einer Zeit ausgeführt wird.
+Size-Test:: 
+* Mehr als eine einzelne Interaktion
+* Meist mehrere Seiten.
+|===
+
+.Beispiele
+[cols="3*a"]
+|===
+| Brief Use-Case | Casual Use-Case | Fully-dressed Use-Case
+
+|image:BriefUC.png[Brief Use-Case]
+|image:CasualUC.png[Casual Use-Case]
+|image:FullyDressedUC.png[Fully-dressed Use-Case]
+|===
+
+NOTE: "Kassier erfasst das Produkt. System bestätigt Produkt." anstatt "Kassier tippt die Produkt-ID ein. System zeigt Produktnamen."
+
+==== Use-Case-Diagram
+[cols="2*a", width="75", grid="none", frame="none"]
+|===
+|image:UseCaseDiagramm.png[Use-Case-Diagramm]
+|image:UseCaseDiagramm2.png[Use-Case-Diagramm]
+|===
+=== FURPS+
+
+[cols="2*a", grid="none", frame="none"]
+|===
+|
+Functionality (Funktionalität)::
+* Features, Fähigkeiten, Sicherheit
+Usabiltiy (Gebrauchstauglichkeit)::
+* <<_usability_anforderungen>>
+* Accessibility (special needs)
+Reliability (Zuverlässigkeit)::
+* Fehlerrate, Wiederanlauffähigkeit, Vorhersagbarkeit, Datensicherung
+Performance (Performanz)::
+* Reaktionszeiten, Durchsatz, Genauigkeit, Verfügbarkeit, Ressourceneinsatz
+|
+Supportability (Unterstützbarkeit)::
+* Anpassungsfähigkeit, Wartbarkeit, I18n, Konfigurierbarkeit
+
++ (Plus)::
+* *Implementation*: HW, OS, Sprachen, Tests, Tools
+* *Interface*: Schnittstellen von ext. Systemen, Protokolle
+* *Operations*: Betriebliche Aspekte
+* *Packaging*: Auslieferung physisch, logisch (Container, Plugin...)
+* *Legal*: Lizenzen, rechtl. Rahmenbedingungen
+|===
 
 === Systemsequenzdiagram (SSD)
 
-Formal ein UML Sequenzdiagram
-Interaktionen der Akteure mit dem System
+Formal ein UML Sequenzdiagram. Interaktionen der Akteure mit dem System
+
+[cols="3*a"]
+|===
+|image:SSD_Grundelemente.png[Grundelemente Systemsequenzdiagram]
+|image:SSD_Beispiel.png[Beispiel Systemsequenzdiagram]
+|image:SSD.png[Systemsequenzdiagram]
+|===
+
+==== Systemoperationen
+
+[cols="65a,35a"]
+|===
+|
+* Jedes Systemereignis wird von einer Systemoperation bheandelt.
+* Für jede Systemoperation wird ein Design gemacht, wie es im System verarbeitet wird.
+* Für eine Systemoperation kann ein Operation contract erstellt werden.
+* Systemoperationen in einem SSD repräsentieren Aufrufe vom UI- auf Applikation-/Domainlayer
+* Systemoperationen sollten (im englischen) mit "verbObject" bezeichnet werden: enterItem()
+* Absicht betonen, nicht wie es gemacht wird: enterItem() anstatt scan()
+|image:SystemOperation.png[Systemoperation]
+|===
+
+==== Operation Contract
+
+[cols="75a,25a", grid="none", frame="none"]
+|===
+|
+Wann Operation Contracts?::
+* Nur Falls Systemoperation unklar/kompliziert oder Entwicklungs ausgelagert wird.
+* Erst gegen Ende der Elaborationsphase, kurz vor Design der Sysmtemoperation
+|image:OperationsContract.png[Operations Contract]
+|===
+
+== Domänenmodellierung
+
+== Softwarearchitektur und Design
+
+== Implementation, Refactoring und Testing
+
+== Entwurf mit Design Patterns
+
+== Vertiefungen
+
+=== Verteilte Systeme
+
+=== GUI-Architekturen
+
+=== Persistenz
+
+=== Framework Design
 

@@ -463,21 +463,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_user_centered_design_ucd">2.3. User-Centered Design (UCD)</a></li>
 <li><a href="#_geschäftsprozessmodell">2.4. Geschäftsprozessmodell</a></li>
 <li><a href="#_funktionale_anforderungen_mit_use_cases">2.5. Funktionale Anforderungen (mit Use-Cases)</a></li>
-<li><a href="#_use_cases">2.6. Use Cases</a></li>
-<li><a href="#_systemsequenzdiagram_ssd">2.7. Systemsequenzdiagram (SSD)</a></li>
+<li><a href="#_use_cases">2.6. Use-Cases</a></li>
+<li><a href="#_furps">2.7. FURPS+</a></li>
+<li><a href="#_systemsequenzdiagram_ssd">2.8. Systemsequenzdiagram (SSD)</a></li>
+</ul>
+</li>
+<li><a href="#_domänenmodellierung">3. Domänenmodellierung</a></li>
+<li><a href="#_softwarearchitektur_und_design">4. Softwarearchitektur und Design</a></li>
+<li><a href="#_implementation_refactoring_und_testing">5. Implementation, Refactoring und Testing</a></li>
+<li><a href="#_entwurf_mit_design_patterns">6. Entwurf mit Design Patterns</a></li>
+<li><a href="#_vertiefungen">7. Vertiefungen</a>
+<ul class="sectlevel2">
+<li><a href="#_verteilte_systeme">7.1. Verteilte Systeme</a></li>
+<li><a href="#_gui_architekturen">7.2. GUI-Architekturen</a></li>
+<li><a href="#_persistenz">7.3. Persistenz</a></li>
+<li><a href="#_framework_design">7.4. Framework Design</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1 data-line-9">
+<div class="sect1 data-line-10">
 <h2 id="_software_engineering">1. Software Engineering</h2>
 <div class="sectionbody">
-<div class="paragraph data-line-11">
+<div class="paragraph data-line-12">
 <p>Software Engineering beschäftigt sich mit der Herstellung oder Entwicklung von Software, der Organisation und Modellierung der zugehörigen Datenstrukturen und dem Betrieb von Softwaresystemen</p>
 </div>
-<table class="tableblock frame-all grid-all stretch data-line-13">
+<table class="tableblock frame-all grid-all stretch data-line-14">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -532,20 +545,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
-<div class="sect2 data-line-33">
+<div class="sect2 data-line-34">
 <h3 id="_iterativ_inkrementell_entwicklungsprozess">1.1. Iterativ-inkrementell Entwicklungsprozess</h3>
-<div class="imageblock right data-line-35">
+<div class="imageblock right data-line-36">
 <div class="content">
 <img src="http://upload.wikimedia.org/wikipedia/commons/a/ac/Iterative_development_model_V2.jpg" alt="Iteratives Modell" width="300">
 </div>
 </div>
-<div class="paragraph data-line-37">
+<div class="paragraph data-line-38">
 <p>Software wird in mehreren geplanten und kontrolliert durchgeführten Iterationsschritten stückweise (inkrementell) entwickelt.</p>
 </div>
-<div class="paragraph data-line-39">
+<div class="paragraph data-line-40">
 <p>Ziel und Gelände sind am Anfang unklar: Lenkwaffe.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch data-line-42">
+<table class="tableblock frame-all grid-all stretch data-line-43">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -584,7 +597,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
-<div class="hdlist data-line-57">
+<div class="hdlist data-line-58">
 <table>
 <tr>
 <td class="hdlist1">
@@ -605,15 +618,15 @@ Empirische Prozesskontrolle (Agil)
 </table>
 </div>
 </div>
-<div class="sect2 data-line-60">
+<div class="sect2 data-line-61">
 <h3 id="_modelle">1.2. Modelle</h3>
-<div class="paragraph data-line-62">
+<div class="paragraph data-line-63">
 <p>Modelle helfen ein Gebilde zu verstehen und kommunizieren. Es hilft as Gebilde zu gestalten, bewerten und kritisieren</p>
 </div>
 </div>
-<div class="sect2 data-line-64">
+<div class="sect2 data-line-65">
 <h3 id="_uml">1.3. UML</h3>
-<div class="hdlist data-line-67">
+<div class="hdlist data-line-68">
 <table>
 <tr>
 <td class="hdlist1">
@@ -644,36 +657,36 @@ Programming-Laguage
 </div>
 </div>
 </div>
-<div class="sect1 data-line-71">
+<div class="sect1 data-line-72">
 <h2 id="_anforderungsanalyse">2. Anforderungsanalyse</h2>
 <div class="sectionbody">
-<div class="ulist data-line-73">
-<ul>
-<li class="data-line-73">
-<p>Usability</p>
 <div class="ulist data-line-74">
 <ul>
 <li class="data-line-74">
+<p>Usability</p>
+<div class="ulist data-line-75">
+<ul>
+<li class="data-line-75">
 <p>Deutsch: Gebrauchstauglichkeit</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="data-line-75">
-<p>User Experience</p>
-<div class="ulist data-line-76">
-<ul>
 <li class="data-line-76">
+<p>User Experience</p>
+<div class="ulist data-line-77">
+<ul>
+<li class="data-line-77">
 <p>= Usability + Desirability</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="data-line-77">
-<p>Customer Experience</p>
-<div class="ulist data-line-78">
-<ul>
 <li class="data-line-78">
+<p>Customer Experience</p>
+<div class="ulist data-line-79">
+<ul>
+<li class="data-line-79">
 <p>= Usability + Desirability + Brand experience</p>
 </li>
 </ul>
@@ -681,12 +694,12 @@ Programming-Laguage
 </li>
 </ul>
 </div>
-<div class="sect2 data-line-80">
+<div class="sect2 data-line-81">
 <h3 id="_usability_engineering">2.1. Usability Engineering</h3>
-<div class="paragraph data-line-81">
+<div class="paragraph data-line-82">
 <p>Ziel: Software entwickeln, welche 3 Anforderungen erfüllt</p>
 </div>
-<table class="tableblock frame-all grid-all stretch data-line-82">
+<table class="tableblock frame-all grid-all stretch data-line-83">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -708,51 +721,51 @@ Programming-Laguage
 </tbody>
 </table>
 </div>
-<div class="sect2 data-line-92">
+<div class="sect2 data-line-94">
 <h3 id="_usability_anforderungen">2.2. Usability Anforderungen</h3>
-<div class="paragraph data-line-93">
+<div class="paragraph data-line-95">
 <p>Anforderungsbereiche bezüglich Usabilty</p>
 </div>
-<div class="ulist data-line-95">
+<div class="ulist data-line-97">
 <ul>
-<li class="data-line-95">
+<li class="data-line-97">
 <p>Aufgabenangemessenheit</p>
 </li>
-<li class="data-line-96">
+<li class="data-line-98">
 <p>Lernförderlichkeit</p>
 </li>
-<li class="data-line-97">
+<li class="data-line-99">
 <p>Individualisierbarkeit</p>
 </li>
-<li class="data-line-98">
+<li class="data-line-100">
 <p>Erwartungskonformität</p>
 </li>
-<li class="data-line-99">
+<li class="data-line-101">
 <p>Selbstbeschreibungsfähigkeit</p>
 </li>
-<li class="data-line-100">
+<li class="data-line-102">
 <p>Steuerbarkeit</p>
 </li>
-<li class="data-line-101">
+<li class="data-line-103">
 <p>Fehlertoleranz</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2 data-line-103">
+<div class="sect2 data-line-105">
 <h3 id="_user_centered_design_ucd">2.3. User-Centered Design (UCD)</h3>
-<div class="imageblock right data-line-106">
+<div class="imageblock right data-line-108">
 <div class="content">
 <img src="img/UCD.png" alt="User-Centered Design diagram" width="300">
 </div>
 <div class="title">Figure 1. User-Centered Design</div>
 </div>
-<div class="sect3 data-line-109">
+<div class="sect3 data-line-111">
 <h4 id="_user_domain_research">2.3.1. User &amp; Domain Research</h4>
-<div class="paragraph data-line-111">
+<div class="paragraph data-line-113">
 <p><strong>Wer</strong> sind die User? <strong>Was</strong> sind ihre Ziele/Kontext? <strong>Wie</strong>?</p>
 </div>
-<div class="hdlist data-line-114">
+<div class="hdlist data-line-116">
 <table>
 <tr>
 <td class="hdlist1">
@@ -767,15 +780,15 @@ Contextual Inquiry
 Contextual Interview
 </td>
 <td class="hdlist2">
-<div class="ulist data-line-116">
+<div class="ulist data-line-118">
 <ul>
-<li class="data-line-116">
+<li class="data-line-118">
 <p>Strukturiert (Mündlicher Fragebogen)</p>
 </li>
-<li class="data-line-117">
+<li class="data-line-119">
 <p>Semi-strukturiert</p>
 </li>
-<li class="data-line-118">
+<li class="data-line-120">
 <p>Unstrukturiert (Keine Vorbereitung, nur grobe Ziele)</p>
 </li>
 </ul>
@@ -785,16 +798,16 @@ Contextual Interview
 </table>
 </div>
 <hr>
-<div class="paragraph data-line-121">
+<div class="paragraph data-line-123">
 <p>User-Centered Design Process Artefakte:</p>
 </div>
-<div class="imageblock right data-line-124">
+<div class="imageblock right data-line-126">
 <div class="content">
 <img src="img/Stakeholders.png" alt="Stakeholder Diagram" width="300">
 </div>
 <div class="title">Figure 2. Stakeholder Map</div>
 </div>
-<div class="hdlist data-line-127">
+<div class="hdlist data-line-129">
 <table>
 <tr>
 <td class="hdlist1">
@@ -854,74 +867,447 @@ Wireframes
 </tr>
 </table>
 </div>
-<div class="imageblock right data-line-136">
+<div class="imageblock right data-line-138">
 <div class="content">
 <img src="img/UDR.png" alt="User &amp; Domain Research Diagram" width="300">
 </div>
 <div class="title">Figure 3. User &amp; Domain Research</div>
 </div>
-<div class="paragraph data-line-138">
+<div class="paragraph data-line-140">
 <p>Fokusgruppen, Umfragen, Nutzungsauswertung, Desktop Research</p>
 </div>
 </div>
-<div class="sect3 data-line-141">
-<h4 id="_requrements_analysis">2.3.2. Requrements Analysis</h4>
-<div class="ulist data-line-143">
+<div class="sect3 data-line-143">
+<h4 id="_requirements_analysis">2.3.2. Requirements Analysis</h4>
+<div class="ulist data-line-145">
 <ul>
-<li class="data-line-143">
+<li class="data-line-145">
 <p>Wann, wie und warum interagiert der Benutzer mit dem System</p>
 </li>
-<li class="data-line-144">
+<li class="data-line-146">
 <p>Was sind die wichtigsten Anforderungen an die Interaktion und das System an Benutzersicht</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3 data-line-146">
+<div class="sect3 data-line-148">
 <h4 id="_design_prototype">2.3.3. Design &amp; Prototype</h4>
-<div class="ulist data-line-148">
+<div class="ulist data-line-150">
 <ul>
-<li class="data-line-148">
+<li class="data-line-150">
 <p>Entwicklung des Interaktionskonzepts</p>
 </li>
-<li class="data-line-149">
+<li class="data-line-151">
 <p>Umsetzung des Konzepts mit Interaktionsprototypen</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3 data-line-151">
+<div class="sect3 data-line-153">
 <h4 id="_evaluate">2.3.4. Evaluate</h4>
-<div class="ulist data-line-153">
+<div class="ulist data-line-155">
 <ul>
-<li class="data-line-153">
+<li class="data-line-155">
 <p>Test des Interaktionskonzepts mit Benutzern &amp; Fachexperten</p>
 </li>
-<li class="data-line-154">
+<li class="data-line-156">
 <p>Basierend auf den Interaktionsprototypen</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect2 data-line-156">
+<div class="sect2 data-line-158">
 <h3 id="_geschäftsprozessmodell">2.4. Geschäftsprozessmodell</h3>
 
 </div>
-<div class="sect2 data-line-158">
+<div class="sect2 data-line-160">
 <h3 id="_funktionale_anforderungen_mit_use_cases">2.5. Funktionale Anforderungen (mit Use-Cases)</h3>
 
 </div>
-<div class="sect2 data-line-160">
-<h3 id="_use_cases">2.6. Use Cases</h3>
+<div class="sect2 data-line-162">
+<h3 id="_use_cases">2.6. Use-Cases</h3>
+<table class="tableblock frame-all grid-all stretch data-line-165">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Ausprägungen</th>
+<th class="tableblock halign-left valign-top">Tests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Kurz (Brief UC)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Titel + 1 Absatz</p>
+</li>
+<li>
+<p>Standardablauf (keine Varianten, Problemfälle)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Informell (Casual UC)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Title + informelle Beschreibung (1-3 Absätze)</p>
+</li>
+<li>
+<p>Beschreibt auch wichtige Varianten</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Vollständig (Fully dressed UC)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Titel + alle Schritte und Varianten im Detail</p>
+</li>
+<li>
+<p>Inklusive Infos über Vorbereitungen, Erfolgsgarantien etc.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Boss-Test</dt>
+<dd>
+<p>Falls ganzer Tag in UC investiert wird sollte Boss zufrieden sein.</p>
+</dd>
+<dt class="hdlist1">EBP-Test (Elementary Business Proc.)</dt>
+<dd>
+<p>Eine Aufgabe die von einer Person an einem Ort zu einer Zeit ausgeführt wird.</p>
+</dd>
+<dt class="hdlist1">Size-Test</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Mehr als eine einzelne Interaktion</p>
+</li>
+<li>
+<p>Meist mehrere Seiten.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch data-line-188">
+<caption class="title">Table 1. Beispiele</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Brief Use-Case</th>
+<th class="tableblock halign-left valign-top">Casual Use-Case</th>
+<th class="tableblock halign-left valign-top">Fully-dressed Use-Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/BriefUC.png" alt="Brief Use-Case"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/CasualUC.png" alt="Casual Use-Case"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/FullyDressedUC.png" alt="Fully-dressed Use-Case"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note data-line-196">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+"Kassier erfasst das Produkt. System bestätigt Produkt." anstatt "Kassier tippt die Produkt-ID ein. System zeigt Produktnamen."
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3 data-line-198">
+<h4 id="_use_case_diagram">2.6.1. Use-Case-Diagram</h4>
+<table class="tableblock frame-none grid-none data-line-200" style="width: 75%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/UseCaseDiagramm.png" alt="Use-Case-Diagramm"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/UseCaseDiagramm2.png" alt="Use-Case-Diagramm"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2 data-line-204">
+<h3 id="_furps">2.7. FURPS+</h3>
+<table class="tableblock frame-none grid-none stretch data-line-207">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Functionality (Funktionalität)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Features, Fähigkeiten, Sicherheit</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Usabiltiy (Gebrauchstauglichkeit)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_usability_anforderungen">Usability Anforderungen</a></p>
+</li>
+<li>
+<p>Accessibility (special needs)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Reliability (Zuverlässigkeit)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Fehlerrate, Wiederanlauffähigkeit, Vorhersagbarkeit, Datensicherung</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Performance (Performanz)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Reaktionszeiten, Durchsatz, Genauigkeit, Verfügbarkeit, Ressourceneinsatz</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Supportability (Unterstützbarkeit)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Anpassungsfähigkeit, Wartbarkeit, I18n, Konfigurierbarkeit</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">+ (Plus)</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Implementation</strong>: HW, OS, Sprachen, Tests, Tools</p>
+</li>
+<li>
+<p><strong>Interface</strong>: Schnittstellen von ext. Systemen, Protokolle</p>
+</li>
+<li>
+<p><strong>Operations</strong>: Betriebliche Aspekte</p>
+</li>
+<li>
+<p><strong>Packaging</strong>: Auslieferung physisch, logisch (Container, Plugin&#8230;&#8203;)</p>
+</li>
+<li>
+<p><strong>Legal</strong>: Lizenzen, rechtl. Rahmenbedingungen</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 data-line-230">
+<h3 id="_systemsequenzdiagram_ssd">2.8. Systemsequenzdiagram (SSD)</h3>
+<div class="paragraph data-line-232">
+<p>Formal ein UML Sequenzdiagram. Interaktionen der Akteure mit dem System</p>
+</div>
+<table class="tableblock frame-all grid-all stretch data-line-235">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/SSD_Grundelemente.png" alt="Grundelemente Systemsequenzdiagram"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/SSD_Beispiel.png" alt="Beispiel Systemsequenzdiagram"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/SSD.png" alt="Systemsequenzdiagram"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3 data-line-241">
+<h4 id="_systemoperationen">2.8.1. Systemoperationen</h4>
+<table class="tableblock frame-all grid-all stretch data-line-244">
+<colgroup>
+<col style="width: 65%;">
+<col style="width: 35%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Jedes Systemereignis wird von einer Systemoperation bheandelt.</p>
+</li>
+<li>
+<p>Für jede Systemoperation wird ein Design gemacht, wie es im System verarbeitet wird.</p>
+</li>
+<li>
+<p>Für eine Systemoperation kann ein Operation contract erstellt werden.</p>
+</li>
+<li>
+<p>Systemoperationen in einem SSD repräsentieren Aufrufe vom UI- auf Applikation-/Domainlayer</p>
+</li>
+<li>
+<p>Systemoperationen sollten (im englischen) mit "verbObject" bezeichnet werden: enterItem()</p>
+</li>
+<li>
+<p>Absicht betonen, nicht wie es gemacht wird: enterItem() anstatt scan()</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/SystemOperation.png" alt="Systemoperation"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-255">
+<h4 id="_operation_contract">2.8.2. Operation Contract</h4>
+<table class="tableblock frame-none grid-none stretch data-line-258">
+<colgroup>
+<col style="width: 75%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Wann Operation Contracts?</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Nur Falls Systemoperation unklar/kompliziert oder Entwicklungs ausgelagert wird.</p>
+</li>
+<li>
+<p>Erst gegen Ende der Elaborationsphase, kurz vor Design der Sysmtemoperation</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="img/OperationsContract.png" alt="Operations Contract"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 data-line-266">
+<h2 id="_domänenmodellierung">3. Domänenmodellierung</h2>
+<div class="sectionbody">
 
 </div>
-<div class="sect2 data-line-162">
-<h3 id="_systemsequenzdiagram_ssd">2.7. Systemsequenzdiagram (SSD)</h3>
-<div class="paragraph data-line-164">
-<p>Formal ein UML Sequenzdiagram
-Interaktionen der Akteure mit dem System</p>
 </div>
+<div class="sect1 data-line-268">
+<h2 id="_softwarearchitektur_und_design">4. Softwarearchitektur und Design</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1 data-line-270">
+<h2 id="_implementation_refactoring_und_testing">5. Implementation, Refactoring und Testing</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1 data-line-272">
+<h2 id="_entwurf_mit_design_patterns">6. Entwurf mit Design Patterns</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1 data-line-274">
+<h2 id="_vertiefungen">7. Vertiefungen</h2>
+<div class="sectionbody">
+<div class="sect2 data-line-276">
+<h3 id="_verteilte_systeme">7.1. Verteilte Systeme</h3>
+
+</div>
+<div class="sect2 data-line-278">
+<h3 id="_gui_architekturen">7.2. GUI-Architekturen</h3>
+
+</div>
+<div class="sect2 data-line-280">
+<h3 id="_persistenz">7.3. Persistenz</h3>
+
+</div>
+<div class="sect2 data-line-282">
+<h3 id="_framework_design">7.4. Framework Design</h3>
+
 </div>
 </div>
 </div>
@@ -929,7 +1315,7 @@ Interaktionen der Akteure mit dem System</p>
 <div id="footer">
 <div id="footer-text">
 Version 0.1<br>
-Last updated 2021-01-12 18:40:33 +0100
+Last updated 2021-01-13 11:35:28 +0100
 </div>
 </div>
 </body>
