@@ -2,8 +2,9 @@
 Joël Plambeck <plambjoe@students.zhaw.ch>
 0.1,
 :toc:
+:toclevels: 3
 :sectnums:
-:sectnumlevels: 3 % sets numbering of header up to level 5
+:sectnumlevels: 4 % sets numbering of header up to level 5
 :icons: font
 :imagesdir: img
 
@@ -344,6 +345,8 @@ image:Aktivitätsdiagram.png[Aktivitätsdiagram, 75%]
 
 GRASP (General Responsibility Assignment Software Patterns) bezeichnet eine Menge von grundlegenden Prinzipen bzw. Pattern, mit denen die Zuständigkeit bestimmter Klassen objektorientierter Systeme festgelegt wird.
 
+image:GRASP.png[GRASP, 75%]
+
 ==== Information Expert
 
 [horizontal]
@@ -476,6 +479,82 @@ Lösung:: Identifizieren Sie die Punkte, and denen Veränderungen und Instabilit
 image:ProtectedVariations.png[ProtectedVariations, 75%]
 
 === Design-Patterns (GoF-Patterns)
+
+image:DesignPatterns.png[Design Patterns, 50%]
+
+==== Adapter
+
+Oft wird so ein externer Dienst in die eigene Anwendung integriert, insbesondere wenn der Dienst austauschbar sein soll.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Eine Klasse soll eingesetzt werden, die aber inkompatibel mit einem bereits definierten domänen-spezifischem Interface ist.
+Lösung:: Eine eigene AdapterKlasse wird dazwischengeschaltet.
+| image:Adapter.png[Adapter]
+|===
+
+==== Simple Factory
+
+Oft ist die Erzeugung des neuen Objekts von irgendeiner Art von Konfigurationabhängig.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Das Erzeugen eines neuen Objekts ist aufwändig.
+Lösung:: Eine eigeneKlasse für das Erzeugen eines neuen Objekts wird geschrieben.
+| image:SimpleFactory.png[Simple Factory]
+|===
+
+==== Singleton
+
+Singletons sind dann wichtig, wenn es genau einen zentralen Ort braucht, um Ressourcen zu verwalten. Globale Sichbarkeit ist problematisch
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: 
+* Man benötigt von einer Klasse nur eine einzigeInstanz.
+* Diese Instanz muss global sichtbar sein.
+Lösung:: 
+* Klasse mit einer statischen Methode, die immer dasselbe Objekt zurückliefert.
+* Statische Methode wird public deklariert.
+| image:Singleton.png[Singleton]
+|===
+
+==== Dependency Injection
+
+Ersatz für das Factory Pattern. Direkter Widerspruch zum GRASP Creator Prinzip.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Eine Klasse brauchteine Referenzauf ein anderes Objekt. Dieses Objekt muss ein bestimmtes Interfacedefinieren, je nach Konfiguration aber mit einer anderen Funktionalität.
+Lösung:: Anstelle, dass die Klasse das abhängige Objekt selber erzeugt, wird dieses Objekt von aussen (Injector) gesetzt.
+| image:DependencyInjection.png[Dependency Injection]
+|===
+
+==== Proxy
+
+Sieht ähnlich aus wie ein Adapter, der Unterschied ist aber, dass der «Adaptee», in diesem Fall das RealSubject, auch dasselbe Interface implementiert wie der «Adapter» resp. Subject
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Ein Objekt ist nicht oder noch nicht im selbenAdressraum verfügbar.
+Lösung:: 
+* Ein Stellvertreter Objekt («Proxy») mit demselben Interface wird anstelle des richtigen Objekts verwendet. 
+* Das «Proxy» Objekt leitet alle Methodenaufrufe zum richtigen Objekt weiter.
+| image:Proxy.png[Proxy]
+|===
+
+==== Chain of Responsibility
+
+Als Variantedavon leitet jeder Handler die Anfrage an den nächsten Handler weiter, unabhängigdavon, ob er sie selber behandelt oder nicht.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Für eine Anfrage gibt es potentiell mehrere Handler, aber von vornherein ist es nicht möglich (oder nur sehr schwer), den richtigen Handler herauszufinden.
+Lösung:: 
+* Die Handler werden in einer einfach verketteten Liste hintereinander geschaltet. 
+* Jeder Handler entscheidet dann, ob der die Anfrage selber beantworten möchte oder sie an den nächsten Handler weiterleitet.
+| image:ChainOfResponsibility.png[Chain Of Responsibility]
+|===
 
 === Design-Klassendiagram (DCD)
 
