@@ -436,7 +436,7 @@ Lösung:: Weisen Sie Verantwortlichkeiten so zu, dass die Kohäsion hoch bleibt.
 ==== Polymorphism / Vererbung
 
 [horizontal]
-Problem:: Wie werden typabhängige Alternativen gehandhabt?
+Problem:: Wie werden typ abhängige Alternativen gehandhabt?
 * Sie müssten viele if-then-else oder eine grosse switch-case Anweisungen in derselben Methode programmieren.
 * Sie möchten ein bestimmtes Verhalten (z.B. Einsatz eines externen Dienstes) konfigurierbar machen.
 Lösung:: Weisen Sie das Verhalten mit polymorphen Operationen der Klasse zu, dessen Verhalten variiert. 
@@ -477,7 +477,7 @@ Problem:: Wie sollen Objekte, Subsysteme und Systeme entworfen werden, sodass Ve
 Lösung:: Identifizieren Sie die Punkte, and denen Veränderungen und Instabilitäten zu erwarten sind; weisen Sie Verantwortlichkeiten so zu, dass diese Punkte durch ein stabiles Interface eingekapselt werden (vgl. das O und D in SOLID [3]). * Dies ist ein sehr wichtiges, grundlegendes Prinzip des Softwaredesigns!
 * Es sollten zwischen folgenden Änderungspunkte unterschieden werden.
 ** Variationspunkt: Veränderungen sind sicher (in Anforderung); Zwingend PV Konzepte einbauen
-** Entwicklungspunkt:Veränderungen sind nicht sicher, werden aber mit hoher Wahrscheinlichkeit eintreffen; sind nicht in Anforderungen enthalten
+** Entwicklungspunkt:nVeränderungen sind nicht sicher, werden aber mit hoher Wahrscheinlichkeit eintreffen; sind nicht in Anforderungen enthalten
 * Spekulative Anwendungen sind aber zu vermeiden, da dies zu unnötiger Komplexität führt.
 * Es ist die «Kunst» des erfahrenen Designer, die richtigen Annahmen treffen!
 
@@ -494,8 +494,8 @@ image:DesignPatterns.png[Design Patterns, 50%]
 * Ein <<Proxy>> kapselt den Zugriff auf ein anderes Objekt vollständig ab und ist wie ein Stellvertreter.
 * <<Chain of Responsibility>> ist dann angebracht, wenn eine Aufgabe potentiell von mehreren Handlern übernommen werden kann, aber für eine konkrete Aufgabe im voraus nicht klar ist, welcher Handler wirklich zuständig ist.
 * Ein <<Decorator>> erweitert die Funktionalität eines Objekts (im Gegensatz zu Vererbung)
-* Ein <<Observer>> beobachtet das Observable. Da der Observer nur als Interface dem Observable bekannt ist, wird Low Coupling unterstützt. 
-* Eine <<Strategy>> ist ein Klasse, die genau einen Algorithmus enthält. Über Polymorphismus kann dann die Strategyeinfach ausgetauscht werden. 
+* Ein <<Observer>> beobachtet das Observable. Da der Observer nur als Interface dem Observable bekannt ist, wird <<Low Coupling>> unterstützt. 
+* Eine <<Strategy>> ist ein Klasse, die genau einen Algorithmus enthält. Über Polymorphismus kann dann die Strategy einfach ausgetauscht werden. 
 * Ein <<Composite>> beinhaltet Objekt, das dasselbe Interface wie das Composite implementieren. Viele Methoden werden dann auf diese Objekte weitergeleitet. 
 * Zustandsabhängiges Verhalten wird über ein <<State>> Objekt geleitet. 
 * Ein <<Visitor>> besucht Objekte, die dann die richtige Methode auf dem Visitor aufrufen.
@@ -508,24 +508,24 @@ Oft wird so ein externer Dienst in die eigene Anwendung integriert, insbesondere
 |===
 a|
 Problem:: Eine Klasse soll eingesetzt werden, die aber inkompatibel mit einem bereits definierten domänen-spezifischem Interface ist.
-Lösung:: Eine eigene AdapterKlasse wird dazwischengeschaltet.
+Lösung:: Eine eigene AdapterKlasse wird dazwischen geschaltet.
 | image:Adapter.png[Adapter]
 |===
 
 ==== Factory
 
-Oft ist die Erzeugung des neuen Objekts von irgendeiner Art von Konfigurationabhängig.
+Oft ist die Erzeugung des neuen Objekts von irgendeiner Art von Konfiguration abhängig.
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
 Problem:: Das Erzeugen eines neuen Objekts ist aufwändig.
-Lösung:: Eine eigeneKlasse für das Erzeugen eines neuen Objekts wird geschrieben.
+Lösung:: Eine eigene Klasse für das Erzeugen eines neuen Objekts wird geschrieben.
 | image:SimpleFactory.png[Simple Factory]
 |===
 
 ==== Singleton
 
-Singletons sind dann wichtig, wenn es genau einen zentralen Ort braucht, um Ressourcen zu verwalten. Globale Sichbarkeit ist problematisch
+Singletons sind dann wichtig, wenn es genau einen zentralen Ort braucht, um Ressourcen zu verwalten. Globale Sichtbarkeit ist problematisch
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
@@ -544,7 +544,7 @@ Ersatz für das Factory Pattern. Direkter Widerspruch zum GRASP Creator Prinzip.
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
-Problem:: Eine Klasse brauchteine Referenzauf ein anderes Objekt. Dieses Objekt muss ein bestimmtes Interfacedefinieren, je nach Konfiguration aber mit einer anderen Funktionalität.
+Problem:: Eine Klasse braucht eine Referenz auf ein anderes Objekt. Dieses Objekt muss ein bestimmtes Interface definieren, je nach Konfiguration aber mit einer anderen Funktionalität.
 Lösung:: Anstelle, dass die Klasse das abhängige Objekt selber erzeugt, wird dieses Objekt von aussen (Injector) gesetzt.
 | image:DependencyInjection.png[Dependency Injection]
 |===
@@ -564,7 +564,7 @@ Lösung::
 
 ==== Chain of Responsibility
 
-Als Variantedavon leitet jeder Handler die Anfrage an den nächsten Handler weiter, unabhängigdavon, ob er sie selber behandelt oder nicht.
+Als Variante davon leitet jeder Handler die Anfrage an den nächsten Handler weiter, unabhängig davon, ob er sie selber behandelt oder nicht.
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
@@ -577,7 +577,7 @@ Lösung::
 
 ==== Decorator
 
-In der Package java.io gibt es die Klasse FilterInputStream, die die Basisklasse für Decorators von InputStreamKlassen darstellt. Mit diesen Filter Klassen kann eine ganze Kette von InputStreamKlassen flexibel zusammengehängt werden, die dann eine komplexe Gesamtverantwortlichkeit bieten. 
+In der Package java.io gibt es die Klasse FilterInputStream, die die Basisklasse für Decorators von InputStream Klassen darstellt. Mit diesen Filter Klassen kann eine ganze Kette von InputStream Klassen flexibel zusammengehängt werden, die dann eine komplexe Gesamtverantwortlichkeit bieten. 
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
@@ -592,7 +592,7 @@ Oft wird dieses Pattern auch «Publish-Subscribe»genannt. Observable kennt nur 
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
-Problem:: Ein Objektsoll ein anderes Objektbenachrichtigen, ohnedass es den genauen Typ des Empfängers kennt.
+Problem:: Ein Objektsoll ein anderes Objekt benachrichtigen, ohne dass es den genauen Typ des Empfängers kennt.
 Lösung:: Ein Interface wird definiert, das nur dazu dient, ein Objekt über eine Änderung zu informieren. Dieses Interface wird vom «Observer» implementiert. Das «Observable» Objekt benachrichtigt alle registrierten «Observer» über eine Änderung.
 | image:Observable.png[Observable]
 |===
@@ -605,7 +605,7 @@ Das Interface hat nur eine einzige Methode. Als Parameter müssen alle Datenübe
 a|
 Problem:: Ein Algorithmus soll einfach austauschbar sein.
 Lösung:: 
-* Den Algorithmus in eine eigeneKlasse verschieben, die nur eineMethodemit diesem Algorithmus hat.
+* Den Algorithmus in eine eigene Klasse verschieben, die nur eine Methodemit diesem Algorithmus hat.
 * Ein Interfacefür diese Klasse definieren, das von alternativen Algorithmen implementiert werden muss.
 | image:Strategy.png[Strategy]
 |===
@@ -623,7 +623,7 @@ Lösung:: Sie definieren ein Composite, das ebenfalls dasselbe Interface impleme
 
 ==== State
 
-Die Zustands-Klassen implementieren das Zustand-Interface. Die Zustands-Objekte sind nichts anderes als StrategyObjekte und können Singletons sein.
+Die Zustands-Klassen implementieren das Zustand-Interface. Die Zustands-Objekte sind nichts anderes als Strategy Objekte und können Singletons sein.
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
@@ -647,7 +647,7 @@ Lösung:: Die Klassenhierarchie wird mit einer Visitor-Infrastruktur erweitert. 
 
 ==== Facade
 
-Eine Facadekapselt, im Gegensatz zum Adapter, ein Subsystem nicht vollständig ab. Es ist erlaubt, dass die Methoden der Facade Parameter und Rückgabewerte haben, die Bezug auf das Subsystem nehmen.
+Eine Facade kapselt, im Gegensatz zum Adapter, ein Subsystem nicht vollständig ab. Es ist erlaubt, dass die Methoden der Facade Parameter und Rückgabewerte haben, die Bezug auf das Subsystem nehmen.
 [cols="7,3", frame="none", grid="none"]
 |===
 a|
