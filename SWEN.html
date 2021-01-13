@@ -514,26 +514,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_design_patterns_gof_patterns">4.9. Design-Patterns (GoF-Patterns)</a>
 <ul class="sectlevel3">
 <li><a href="#_adapter">4.9.1. Adapter</a></li>
-<li><a href="#_simple_factory">4.9.2. Simple Factory</a></li>
+<li><a href="#_factory">4.9.2. Factory</a></li>
 <li><a href="#_singleton">4.9.3. Singleton</a></li>
 <li><a href="#_dependency_injection">4.9.4. Dependency Injection</a></li>
 <li><a href="#_proxy">4.9.5. Proxy</a></li>
 <li><a href="#_chain_of_responsibility">4.9.6. Chain of Responsibility</a></li>
+<li><a href="#_decorator">4.9.7. Decorator</a></li>
+<li><a href="#_observer">4.9.8. Observer</a></li>
+<li><a href="#_strategy">4.9.9. Strategy</a></li>
+<li><a href="#_composite">4.9.10. Composite</a></li>
+<li><a href="#_state">4.9.11. State</a></li>
+<li><a href="#_visitor">4.9.12. Visitor</a></li>
+<li><a href="#_facade">4.9.13. Facade</a></li>
 </ul>
 </li>
 <li><a href="#_design_klassendiagram_dcd">4.10. Design-Klassendiagram (DCD)</a></li>
-<li><a href="#_paketdiagram_schichten_entwurfsmuster">4.11. Paketdiagram &amp; Schichten-Entwurfsmuster</a></li>
-<li><a href="#_interaktionsdiagramme">4.12. Interaktionsdiagramme</a></li>
 </ul>
 </li>
 <li><a href="#_implementation_refactoring_und_testing">5. Implementation, Refactoring und Testing</a></li>
-<li><a href="#_entwurf_mit_design_patterns">6. Entwurf mit Design Patterns</a></li>
-<li><a href="#_vertiefungen">7. Vertiefungen</a>
+<li><a href="#_vertiefungen">6. Vertiefungen</a>
 <ul class="sectlevel2">
-<li><a href="#_verteilte_systeme">7.1. Verteilte Systeme</a></li>
-<li><a href="#_gui_architekturen">7.2. GUI-Architekturen</a></li>
-<li><a href="#_persistenz">7.3. Persistenz</a></li>
-<li><a href="#_framework_design">7.4. Framework Design</a></li>
+<li><a href="#_verteilte_systeme">6.1. Verteilte Systeme</a></li>
+<li><a href="#_gui_architekturen">6.2. GUI-Architekturen</a></li>
+<li><a href="#_persistenz">6.3. Persistenz</a></li>
+<li><a href="#_framework_design">6.4. Framework Design</a></li>
 </ul>
 </li>
 </ul>
@@ -1249,9 +1253,25 @@ Wireframes
 </tr>
 </tbody>
 </table>
-<div class="sect3 data-line-242">
+<div class="admonitionblock note data-line-242">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Bei der Beschreibung des Diagrams <strong>nicht</strong> schreiben was abgelesen werden kann! Stattdessen mit Patterns argumentieren!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph data-line-245">
+<div class="title">Beispiel</div>
+<p>House ist der Facade-Controller und fungiert als Schnittstelle gegen aussen. Das einzelne Fenster ist der Information-Expert über sein Öffnungs-Zustand ist deshalb dafür verantwortlich das Fenster korrekt zu schliessen/öffnen</p>
+</div>
+<div class="sect3 data-line-247">
 <h4 id="_systemoperationen">2.8.1. Systemoperationen</h4>
-<table class="tableblock frame-none grid-none stretch data-line-245">
+<table class="tableblock frame-none grid-none stretch data-line-250">
 <colgroup>
 <col style="width: 65%;">
 <col style="width: 35%;">
@@ -1287,9 +1307,9 @@ Wireframes
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-256">
+<div class="sect3 data-line-261">
 <h4 id="_operation_contract">2.8.2. Operation Contract</h4>
-<table class="tableblock frame-none grid-none stretch data-line-259">
+<table class="tableblock frame-none grid-none stretch data-line-264">
 <colgroup>
 <col style="width: 75%;">
 <col style="width: 25%;">
@@ -1323,12 +1343,12 @@ Wireframes
 </div>
 </div>
 </div>
-<div class="sect1 data-line-267">
+<div class="sect1 data-line-272">
 <h2 id="_domänenmodellierung">3. Domänenmodellierung</h2>
 <div class="sectionbody">
-<div class="sect2 data-line-269">
+<div class="sect2 data-line-274">
 <h3 id="_domänenmodell">3.1. Domänenmodell</h3>
-<table class="tableblock frame-all grid-all stretch data-line-272">
+<table class="tableblock frame-all grid-all stretch data-line-277">
 <colgroup>
 <col style="width: 40%;">
 <col style="width: 30%;">
@@ -1355,10 +1375,10 @@ Wireframes
 </tr>
 </tbody>
 </table>
-<div class="paragraph data-line-280">
+<div class="paragraph data-line-285">
 <p><span class="image"><img src="img/Domanenmodel.png" alt="Domänenmodel" width="75%"></span></p>
 </div>
-<table class="tableblock frame-all grid-all stretch data-line-284">
+<table class="tableblock frame-all grid-all stretch data-line-289">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1398,10 +1418,10 @@ Wireframes
 </div>
 </div>
 </div>
-<div class="sect1 data-line-304">
+<div class="sect1 data-line-309">
 <h2 id="_softwarearchitektur_und_design">4. Softwarearchitektur und Design</h2>
 <div class="sectionbody">
-<table class="tableblock frame-none grid-none stretch data-line-307">
+<table class="tableblock frame-none grid-none stretch data-line-312">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1413,24 +1433,24 @@ Wireframes
 </tr>
 </tbody>
 </table>
-<div class="sect2 data-line-311">
+<div class="sect2 data-line-316">
 <h3 id="_architekturpattern">4.1. Architekturpattern</h3>
-<div class="paragraph data-line-313">
+<div class="paragraph data-line-318">
 <p><span class="image"><img src="img/ArchitekturPattern.png" alt="Architektur Pattern" width="50%"></span></p>
 </div>
 </div>
-<div class="sect2 data-line-315">
+<div class="sect2 data-line-320">
 <h3 id="_paketdiagram">4.2. Paketdiagram</h3>
-<div class="paragraph data-line-317">
+<div class="paragraph data-line-322">
 <p><span class="image"><img src="img/Paketdiagram.png" alt="Paketdiagram" width="50%"></span></p>
 </div>
 </div>
-<div class="sect2 data-line-319">
+<div class="sect2 data-line-324">
 <h3 id="_sequenzdiagram">4.3. Sequenzdiagram</h3>
-<div class="paragraph data-line-321">
+<div class="paragraph data-line-326">
 <p><span class="image"><img src="img/Sequenzdiagram.png" alt="Sequenzdiagram" width="75%"></span></p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-324">
+<table class="tableblock frame-none grid-none stretch data-line-329">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1443,41 +1463,41 @@ Wireframes
 </tbody>
 </table>
 </div>
-<div class="sect2 data-line-328">
+<div class="sect2 data-line-333">
 <h3 id="_klassendiagram">4.4. Klassendiagram</h3>
-<div class="paragraph data-line-330">
+<div class="paragraph data-line-335">
 <p><span class="image"><img src="img/Klassendiagram.png" alt="Klassendiagram" width="75%"></span></p>
 </div>
 </div>
-<div class="sect2 data-line-332">
+<div class="sect2 data-line-337">
 <h3 id="_kommunikationsdiagram">4.5. Kommunikationsdiagram</h3>
-<div class="paragraph data-line-334">
+<div class="paragraph data-line-339">
 <p><span class="image"><img src="img/Kommunikationsdiagram.png" alt="Kommunikationsdiagram" width="75%"></span></p>
 </div>
 </div>
-<div class="sect2 data-line-336">
+<div class="sect2 data-line-341">
 <h3 id="_zustandsdiagram">4.6. Zustandsdiagram</h3>
-<div class="paragraph data-line-338">
+<div class="paragraph data-line-343">
 <p><span class="image"><img src="img/Zustandsdiagram.png" alt="Zustandsdiagram" width="75%"></span></p>
 </div>
 </div>
-<div class="sect2 data-line-340">
+<div class="sect2 data-line-345">
 <h3 id="_aktivitätsdiagram">4.7. Aktivitätsdiagram</h3>
-<div class="paragraph data-line-342">
+<div class="paragraph data-line-347">
 <p><span class="image"><img src="img/Aktivitätsdiagram.png" alt="Aktivitätsdiagram" width="75%"></span></p>
 </div>
 </div>
-<div class="sect2 data-line-344">
+<div class="sect2 data-line-349">
 <h3 id="_grasp">4.8. GRASP</h3>
-<div class="paragraph data-line-346">
+<div class="paragraph data-line-351">
 <p>GRASP (General Responsibility Assignment Software Patterns) bezeichnet eine Menge von grundlegenden Prinzipen bzw. Pattern, mit denen die Zuständigkeit bestimmter Klassen objektorientierter Systeme festgelegt wird.</p>
 </div>
-<div class="paragraph data-line-348">
+<div class="paragraph data-line-353">
 <p><span class="image"><img src="img/GRASP.png" alt="GRASP" width="75%"></span></p>
 </div>
-<div class="sect3 data-line-350">
+<div class="sect3 data-line-355">
 <h4 id="_information_expert">4.8.1. Information Expert</h4>
-<div class="hdlist data-line-353">
+<div class="hdlist data-line-358">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1505,7 +1525,7 @@ Alternativen
 </tr>
 </table>
 </div>
-<table class="tableblock frame-none grid-all stretch data-line-358">
+<table class="tableblock frame-none grid-all stretch data-line-363">
 <colgroup>
 <col>
 <col>
@@ -1518,9 +1538,9 @@ Alternativen
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-362">
+<div class="sect3 data-line-367">
 <h4 id="_creator">4.8.2. Creator</h4>
-<div class="hdlist data-line-365">
+<div class="hdlist data-line-370">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1536,18 +1556,18 @@ Lösung
 </td>
 <td class="hdlist2">
 <p>Weisen Sie einer Klasse A die Verantwortlichkeit zu, eine Instanz der Klasse B zu erstellen, wenn eine der folgenden Aussagen wahr ist (je mehr desto besser):</p>
-<div class="ulist data-line-367">
+<div class="ulist data-line-372">
 <ul>
-<li class="data-line-367">
+<li class="data-line-372">
 <p>A eine Aggregation oder ein Kompositum von B ist</p>
 </li>
-<li class="data-line-368">
+<li class="data-line-373">
 <p>A registriert oder erfasst B-Objekte</p>
 </li>
-<li class="data-line-369">
+<li class="data-line-374">
 <p>A arbeitet eng mit B-Objekten zusammen oder hat ein enge Kopplung</p>
 </li>
-<li class="data-line-370">
+<li class="data-line-375">
 <p>A verfügt über Initialisierungsdaten für B (d.h. A ist Experte bezüglich Erzeugung von B)</p>
 </li>
 </ul>
@@ -1564,7 +1584,7 @@ Alternativen
 </tr>
 </table>
 </div>
-<table class="tableblock frame-none grid-all stretch data-line-374">
+<table class="tableblock frame-none grid-all stretch data-line-379">
 <colgroup>
 <col>
 <col>
@@ -1577,9 +1597,9 @@ Alternativen
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-378">
+<div class="sect3 data-line-383">
 <h4 id="_controller">4.8.3. Controller</h4>
-<div class="hdlist data-line-381">
+<div class="hdlist data-line-386">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1595,7 +1615,7 @@ Lösung
 </td>
 <td class="hdlist2">
 <p>Weisen Sie Verantwortlichkeit einer Klasse zu, die eine der folgenden Bedingungen erfüllt:</p>
-<div class="dlist data-line-383">
+<div class="dlist data-line-388">
 <dl>
 <dt class="hdlist1">Variante 1</dt>
 <dd>
@@ -1619,7 +1639,7 @@ Wichtig
 </tr>
 </table>
 </div>
-<table class="tableblock frame-all grid-all stretch data-line-388">
+<table class="tableblock frame-all grid-all stretch data-line-393">
 <colgroup>
 <col>
 <col>
@@ -1637,13 +1657,13 @@ Wichtig
 </tr>
 </tbody>
 </table>
-<div class="paragraph data-line-394">
+<div class="paragraph data-line-399">
 <p>Wenn ein Fassaden Controller eine zu geringe Kohäsion aufweist und zu gross wird (LOC), ist ein Use Case Controller zu präferieren!</p>
 </div>
 </div>
-<div class="sect3 data-line-396">
+<div class="sect3 data-line-401">
 <h4 id="_low_coupling">4.8.4. Low Coupling</h4>
-<div class="hdlist data-line-399">
+<div class="hdlist data-line-404">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1651,25 +1671,25 @@ Problem
 </td>
 <td class="hdlist2">
 <p>Wie erreicht man eine geringe Abhängigkeit, wie begrenzt man die Auswirkungen von Änderungen und wie verbessert man die Wiederverwendbarkeit?</p>
-<div class="ulist data-line-400">
+<div class="ulist data-line-405">
 <ul>
-<li class="data-line-400">
+<li class="data-line-405">
 <p>Kopplungist ein Mass für die gegenseitige Abhängigkeit von Elementen. Ein Element kann in diesem Kontext vieles bedeuten: Klassen, Subsysteme, Systeme, Systeme von Systemen.</p>
 </li>
-<li class="data-line-401">
+<li class="data-line-406">
 <p>Eine Klasse mit einer hohen (oder starken) Kopplung ist von vielen anderen Klassen abhängig.</p>
 </li>
-<li class="data-line-402">
+<li class="data-line-407">
 <p>Solche Klassen können unerwünscht sein; viele leiden unter den folgenden Problemen:</p>
-<div class="ulist data-line-403">
+<div class="ulist data-line-408">
 <ul>
-<li class="data-line-403">
+<li class="data-line-408">
 <p>aufgrund von Änderungen in verbundenen Klassen lokale Änderungen nötig</p>
 </li>
-<li class="data-line-404">
+<li class="data-line-409">
 <p>schwieriger zu verstehen</p>
 </li>
-<li class="data-line-405">
+<li class="data-line-410">
 <p>schwieriger wiederzuverwenden, weil für ihre Anwendung auch die Klassen vorhanden sein müssen, von denen sie abhängig sind</p>
 </li>
 </ul>
@@ -1689,7 +1709,7 @@ Lösung
 </tr>
 </table>
 </div>
-<table class="tableblock frame-none grid-all stretch data-line-409">
+<table class="tableblock frame-none grid-all stretch data-line-414">
 <colgroup>
 <col>
 <col>
@@ -1702,9 +1722,9 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-413">
+<div class="sect3 data-line-418">
 <h4 id="_high_coheson">4.8.5. High Coheson</h4>
-<div class="hdlist data-line-416">
+<div class="hdlist data-line-421">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1712,28 +1732,28 @@ Problem
 </td>
 <td class="hdlist2">
 <p>Wie kann erreicht werden, dass Objekte fokussiert, verständlich und handhabbar bleiben und nebenbei Low Coupling unterstützen?</p>
-<div class="ulist data-line-417">
+<div class="ulist data-line-422">
 <ul>
-<li class="data-line-417">
+<li class="data-line-422">
 <p>Im Sinne des Klassenentwurfs ist Kohäsion (oder spezieller funktionale Kohäsion) ein Mass für die Verwandtschaft und Fokussierung eines Elements.</p>
 </li>
-<li class="data-line-418">
+<li class="data-line-423">
 <p>Ein Element mit eng verwandten Verantwortlichkeiten, das nur wenige Aufgaben erledigt, hat eine hohe Kohäsion (Elemente können Klassen, Subsysteme u.s.w. sein).</p>
 </li>
-<li class="data-line-419">
+<li class="data-line-424">
 <p>Eine Klasse mit geringer Kohäsion tut viele unzusammenhängende Dinge (vgl. S in SOLID [3]).</p>
 </li>
-<li class="data-line-420">
+<li class="data-line-425">
 <p>Solche Klassen können unerwünscht sein; viele leiden unter den folgenden Problemen:</p>
-<div class="ulist data-line-421">
+<div class="ulist data-line-426">
 <ul>
-<li class="data-line-421">
+<li class="data-line-426">
 <p>schwer zu verstehen</p>
 </li>
-<li class="data-line-422">
+<li class="data-line-427">
 <p>schwer wiederzuverwenden</p>
 </li>
-<li class="data-line-423">
+<li class="data-line-428">
 <p>brüchig und instabil, sind laufend von Änderungen betroffen</p>
 </li>
 </ul>
@@ -1753,7 +1773,7 @@ Lösung
 </tr>
 </table>
 </div>
-<table class="tableblock frame-none grid-all stretch data-line-427">
+<table class="tableblock frame-none grid-all stretch data-line-432">
 <colgroup>
 <col>
 <col>
@@ -1766,9 +1786,9 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-431">
+<div class="sect3 data-line-436">
 <h4 id="_polymorphism_vererbung">4.8.6. Polymorphism / Vererbung</h4>
-<div class="hdlist data-line-434">
+<div class="hdlist data-line-439">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1776,12 +1796,12 @@ Problem
 </td>
 <td class="hdlist2">
 <p>Wie werden typabhängige Alternativen gehandhabt?</p>
-<div class="ulist data-line-435">
+<div class="ulist data-line-440">
 <ul>
-<li class="data-line-435">
+<li class="data-line-440">
 <p>Sie müssten viele if-then-else oder eine grosse switch-case Anweisungen in derselben Methode programmieren.</p>
 </li>
-<li class="data-line-436">
+<li class="data-line-441">
 <p>Sie möchten ein bestimmtes Verhalten (z.B. Einsatz eines externen Dienstes) konfigurierbar machen.</p>
 </li>
 </ul>
@@ -1794,12 +1814,12 @@ Lösung
 </td>
 <td class="hdlist2">
 <p>Weisen Sie das Verhalten mit polymorphen Operationen der Klasse zu, dessen Verhalten variiert.</p>
-<div class="ulist data-line-438">
+<div class="ulist data-line-443">
 <ul>
-<li class="data-line-438">
+<li class="data-line-443">
 <p>Dies ist eine der grundlegenden Ideen in der objektorientierten Programmierung (Generalisierung / Spezialisierung).</p>
 </li>
-<li class="data-line-439">
+<li class="data-line-444">
 <p>Achtung: Überprüfen Sie, ob es sich tatsächlich auch um eine «isa» Beziehung zwischen Superklasse und Subklassen handelt. Dabei sollte auch das sogenannte Liskov-Substitutions-Prinzip (vgl. L in SOLID [3]) eingehalten werden</p>
 </li>
 </ul>
@@ -1808,13 +1828,13 @@ Lösung
 </tr>
 </table>
 </div>
-<div class="paragraph data-line-441">
+<div class="paragraph data-line-446">
 <p><span class="image"><img src="img/Polymorphismus.png" alt="Polymorphismus" width="50%"></span></p>
 </div>
 </div>
-<div class="sect3 data-line-443">
+<div class="sect3 data-line-448">
 <h4 id="_pure_fabrication">4.8.7. Pure Fabrication</h4>
-<div class="hdlist data-line-446">
+<div class="hdlist data-line-451">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1822,12 +1842,12 @@ Problem
 </td>
 <td class="hdlist2">
 <p>Welches Objekt sollte die Verantwortlichkeit haben, wenn Sie nicht gegen High Cohesionund Low Couplin goder andere Ziele verstossen wollen, aber die Lösungen, die beispielsweise vom Information Expert vorgeschlagen werden, nicht passen?</p>
-<div class="ulist data-line-447">
+<div class="ulist data-line-452">
 <ul>
-<li class="data-line-447">
+<li class="data-line-452">
 <p>Viele Design-Klassen können direkt aus dem Fachbereich (Domänenmodell) abgeleitet werden und erfüllen das Low RepresentationalGap.</p>
 </li>
-<li class="data-line-448">
+<li class="data-line-453">
 <p>Aber es gibt auch viele Situationen, wo es Probleme mit einer geringen Kohäsion, einer starken Kopplung und einer geringen Wiederverwendung gibt, wenn die Verantwortlichkeiten der Klasse in der Domänenschicht zugewiesen wird.</p>
 </li>
 </ul>
@@ -1844,7 +1864,7 @@ Lösung
 </tr>
 </table>
 </div>
-<table class="tableblock frame-none grid-all stretch data-line-452">
+<table class="tableblock frame-none grid-all stretch data-line-457">
 <colgroup>
 <col style="width: 75%;">
 <col style="width: 25%;">
@@ -1857,9 +1877,9 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-456">
+<div class="sect3 data-line-461">
 <h4 id="_indirection">4.8.8. Indirection</h4>
-<div class="hdlist data-line-459">
+<div class="hdlist data-line-464">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1875,15 +1895,15 @@ Lösung
 </td>
 <td class="hdlist2">
 <p>Weisen Sie die Verantwortlichkeit einem zwischengeschalteten Objekt zu, das zwischen den anderen Komponenten oder Diensten vermittelt, so dass diese nicht direkt gekoppelt sind (vgl. das D in SOLID [3]).</p>
-<div class="ulist data-line-461">
+<div class="ulist data-line-466">
 <ul>
-<li class="data-line-461">
+<li class="data-line-466">
 <p>Der Vermittler schafft eine Indirektionzwischen den anderen Komponenten.</p>
 </li>
-<li class="data-line-462">
+<li class="data-line-467">
 <p>Viele GoF Design Patterns wie Adapter, Bridge, Facade, Observer oder Mediator verwenden dieses Prinzip.</p>
 </li>
-<li class="data-line-463">
+<li class="data-line-468">
 <p>Viele Indirections sind Pure Fabrications.</p>
 </li>
 </ul>
@@ -1900,13 +1920,13 @@ Alternativen
 </tr>
 </table>
 </div>
-<div class="paragraph data-line-466">
+<div class="paragraph data-line-471">
 <p><span class="image"><img src="img/Indirection.png" alt="Indirection" width="75%"></span></p>
 </div>
 </div>
-<div class="sect3 data-line-468">
+<div class="sect3 data-line-473">
 <h4 id="_protected_variations">4.8.9. Protected Variations</h4>
-<div class="hdlist data-line-471">
+<div class="hdlist data-line-476">
 <table>
 <tr>
 <td class="hdlist1">
@@ -1922,25 +1942,25 @@ Lösung
 </td>
 <td class="hdlist2">
 <p>Identifizieren Sie die Punkte, and denen Veränderungen und Instabilitäten zu erwarten sind; weisen Sie Verantwortlichkeiten so zu, dass diese Punkte durch ein stabiles Interface eingekapselt werden (vgl. das O und D in SOLID [3]). * Dies ist ein sehr wichtiges, grundlegendes Prinzip des Softwaredesigns!</p>
-<div class="ulist data-line-473">
+<div class="ulist data-line-478">
 <ul>
-<li class="data-line-473">
+<li class="data-line-478">
 <p>Es sollten zwischen folgenden Änderungspunkte unterschieden werden.</p>
-<div class="ulist data-line-474">
+<div class="ulist data-line-479">
 <ul>
-<li class="data-line-474">
+<li class="data-line-479">
 <p>Variationspunkt: Veränderungen sind sicher (in Anforderung); Zwingend PV Konzepte einbauen</p>
 </li>
-<li class="data-line-475">
+<li class="data-line-480">
 <p>Entwicklungspunkt:Veränderungen sind nicht sicher, werden aber mit hoher Wahrscheinlichkeit eintreffen; sind nicht in Anforderungen enthalten</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="data-line-476">
+<li class="data-line-481">
 <p>Spekulative Anwendungen sind aber zu vermeiden, da dies zu unnötiger Komplexität führt.</p>
 </li>
-<li class="data-line-477">
+<li class="data-line-482">
 <p>Es ist die «Kunst» des erfahrenen Designer, die richtigen Annahmen treffen!</p>
 </li>
 </ul>
@@ -1949,22 +1969,62 @@ Lösung
 </tr>
 </table>
 </div>
-<div class="paragraph data-line-479">
+<div class="paragraph data-line-484">
 <p><span class="image"><img src="img/ProtectedVariations.png" alt="ProtectedVariations" width="75%"></span></p>
 </div>
 </div>
 </div>
-<div class="sect2 data-line-481">
+<div class="sect2 data-line-486">
 <h3 id="_design_patterns_gof_patterns">4.9. Design-Patterns (GoF-Patterns)</h3>
-<div class="paragraph data-line-483">
+<div class="paragraph data-line-488">
+<p>Gang of Four Patterns</p>
+</div>
+<div class="paragraph data-line-490">
 <p><span class="image"><img src="img/DesignPatterns.png" alt="Design Patterns" width="50%"></span></p>
 </div>
-<div class="sect3 data-line-485">
+<div class="ulist data-line-492">
+<ul>
+<li class="data-line-492">
+<p>Die Kombination von <a href="#_singleton">Singleton</a>, <a href="#_factory">Factory</a> und <a href="#_adapter">Adapter</a> wurde traditionell oft eingesetzt, um externe Dienste anzusprechen.</p>
+</li>
+<li class="data-line-493">
+<p>Anstelle von <a href="#_singleton">Singleton</a> und <a href="#_factory">Factory</a> ist vermehrt <a href="#_dependency_injection">Dependency Injection</a> (DI) vorzuziehen.</p>
+</li>
+<li class="data-line-494">
+<p>Ein <a href="#_proxy">Proxy</a> kapselt den Zugriff auf ein anderes Objekt vollständig ab und ist wie ein Stellvertreter.</p>
+</li>
+<li class="data-line-495">
+<p><a href="#_chain_of_responsibility">Chain of Responsibility</a> ist dann angebracht, wenn eine Aufgabe potentiell von mehreren Handlern übernommen werden kann, aber für eine konkrete Aufgabe im voraus nicht klar ist, welcher Handler wirklich zuständig ist.</p>
+</li>
+<li class="data-line-496">
+<p>Ein <a href="#_decorator">Decorator</a> erweitert die Funktionalität eines Objekts (im Gegensatz zu Vererbung)</p>
+</li>
+<li class="data-line-497">
+<p>Ein <a href="#_observer">Observer</a> beobachtet das Observable. Da der Observer nur als Interface dem Observable bekannt ist, wird Low Coupling unterstützt.</p>
+</li>
+<li class="data-line-498">
+<p>Eine <a href="#_strategy">Strategy</a> ist ein Klasse, die genau einen Algorithmus enthält. Über Polymorphismus kann dann die Strategyeinfach ausgetauscht werden.</p>
+</li>
+<li class="data-line-499">
+<p>Ein <a href="#_composite">Composite</a> beinhaltet Objekt, das dasselbe Interface wie das Composite implementieren. Viele Methoden werden dann auf diese Objekte weitergeleitet.</p>
+</li>
+<li class="data-line-500">
+<p>Zustandsabhängiges Verhalten wird über ein <a href="#_state">State</a> Objekt geleitet.</p>
+</li>
+<li class="data-line-501">
+<p>Ein <a href="#_visitor">Visitor</a> besucht Objekte, die dann die richtige Methode auf dem Visitor aufrufen.</p>
+</li>
+<li class="data-line-502">
+<p>Ein <a href="#_facade">Facade</a> bietet für ein Teilsystem eine vereinfachte Benutzung an.</p>
+</li>
+</ul>
+</div>
+<div class="sect3 data-line-504">
 <h4 id="_adapter">4.9.1. Adapter</h4>
-<div class="paragraph data-line-487">
+<div class="paragraph data-line-506">
 <p>Oft wird so ein externer Dienst in die eigene Anwendung integriert, insbesondere wenn der Dienst austauschbar sein soll.</p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-489">
+<table class="tableblock frame-none grid-none stretch data-line-508">
 <colgroup>
 <col style="width: 70%;">
 <col style="width: 30%;">
@@ -1988,12 +2048,12 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-496">
-<h4 id="_simple_factory">4.9.2. Simple Factory</h4>
-<div class="paragraph data-line-498">
+<div class="sect3 data-line-515">
+<h4 id="_factory">4.9.2. Factory</h4>
+<div class="paragraph data-line-517">
 <p>Oft ist die Erzeugung des neuen Objekts von irgendeiner Art von Konfigurationabhängig.</p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-500">
+<table class="tableblock frame-none grid-none stretch data-line-519">
 <colgroup>
 <col style="width: 70%;">
 <col style="width: 30%;">
@@ -2017,12 +2077,12 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-507">
+<div class="sect3 data-line-526">
 <h4 id="_singleton">4.9.3. Singleton</h4>
-<div class="paragraph data-line-509">
+<div class="paragraph data-line-528">
 <p>Singletons sind dann wichtig, wenn es genau einen zentralen Ort braucht, um Ressourcen zu verwalten. Globale Sichbarkeit ist problematisch</p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-511">
+<table class="tableblock frame-none grid-none stretch data-line-530">
 <colgroup>
 <col style="width: 70%;">
 <col style="width: 30%;">
@@ -2064,12 +2124,12 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-522">
+<div class="sect3 data-line-541">
 <h4 id="_dependency_injection">4.9.4. Dependency Injection</h4>
-<div class="paragraph data-line-524">
+<div class="paragraph data-line-543">
 <p>Ersatz für das Factory Pattern. Direkter Widerspruch zum GRASP Creator Prinzip.</p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-526">
+<table class="tableblock frame-none grid-none stretch data-line-545">
 <colgroup>
 <col style="width: 70%;">
 <col style="width: 30%;">
@@ -2093,12 +2153,12 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-533">
+<div class="sect3 data-line-552">
 <h4 id="_proxy">4.9.5. Proxy</h4>
-<div class="paragraph data-line-535">
+<div class="paragraph data-line-554">
 <p>Sieht ähnlich aus wie ein Adapter, der Unterschied ist aber, dass der «Adaptee», in diesem Fall das RealSubject, auch dasselbe Interface implementiert wie der «Adapter» resp. Subject</p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-537">
+<table class="tableblock frame-none grid-none stretch data-line-556">
 <colgroup>
 <col style="width: 70%;">
 <col style="width: 30%;">
@@ -2131,12 +2191,12 @@ Lösung
 </tbody>
 </table>
 </div>
-<div class="sect3 data-line-546">
+<div class="sect3 data-line-565">
 <h4 id="_chain_of_responsibility">4.9.6. Chain of Responsibility</h4>
-<div class="paragraph data-line-548">
+<div class="paragraph data-line-567">
 <p>Als Variantedavon leitet jeder Handler die Anfrage an den nächsten Handler weiter, unabhängigdavon, ob er sie selber behandelt oder nicht.</p>
 </div>
-<table class="tableblock frame-none grid-none stretch data-line-550">
+<table class="tableblock frame-none grid-none stretch data-line-569">
 <colgroup>
 <col style="width: 70%;">
 <col style="width: 30%;">
@@ -2169,50 +2229,257 @@ Lösung
 </tbody>
 </table>
 </div>
+<div class="sect3 data-line-578">
+<h4 id="_decorator">4.9.7. Decorator</h4>
+<div class="paragraph data-line-580">
+<p>In der Package java.io gibt es die Klasse FilterInputStream, die die Basisklasse für Decorators von InputStreamKlassen darstellt. Mit diesen Filter Klassen kann eine ganze Kette von InputStreamKlassen flexibel zusammengehängt werden, die dann eine komplexe Gesamtverantwortlichkeit bieten.</p>
 </div>
-<div class="sect2 data-line-559">
+<table class="tableblock frame-none grid-none stretch data-line-582">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Ein Objekt (nicht ein ganze Klasse) soll mit zusätzlichen Verantwortlichkeiten versehen werden.</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<p>Ein Decorator, der dieselbe Schnittstelle hat wie das ursprüngliche Objekt, wird vordieses geschaltet. Der Decorator kann nun jeden Methodenaufruf entweder selber bearbeiten, ihn an das ursprüngliche Objekt weiterleiten oder eine Mischung aus beidem machen.</p>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/Decorator.png" alt="Decorator"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-589">
+<h4 id="_observer">4.9.8. Observer</h4>
+<div class="paragraph data-line-591">
+<p>Oft wird dieses Pattern auch «Publish-Subscribe»genannt. Observable kennt nur Observer, aber nicht den wahren Typ Concrete Observer. 2 Phasen: Zuerst die Registierungvom Observer, dann die Benachrichtigungen vom Observable.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch data-line-593">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Ein Objektsoll ein anderes Objektbenachrichtigen, ohnedass es den genauen Typ des Empfängers kennt.</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<p>Ein Interface wird definiert, das nur dazu dient, ein Objekt über eine Änderung zu informieren. Dieses Interface wird vom «Observer» implementiert. Das «Observable» Objekt benachrichtigt alle registrierten «Observer» über eine Änderung.</p>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/Observable.png" alt="Observable"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-600">
+<h4 id="_strategy">4.9.9. Strategy</h4>
+<div class="paragraph data-line-602">
+<p>Das Interface hat nur eine einzige Methode. Als Parameter müssen alle Datenübergeben werden, die der Algorithmus benötigt. Dieser Parameter wird üblicherweise «context» benannt.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch data-line-604">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Ein Algorithmus soll einfach austauschbar sein.</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Den Algorithmus in eine eigeneKlasse verschieben, die nur eineMethodemit diesem Algorithmus hat.</p>
+</li>
+<li>
+<p>Ein Interfacefür diese Klasse definieren, das von alternativen Algorithmen implementiert werden muss.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/Strategy.png" alt="Strategy"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-613">
+<h4 id="_composite">4.9.10. Composite</h4>
+<div class="paragraph data-line-615">
+<p>Oft ist die hierarchische Struktur vom Fachgebiether gegeben. Nicht alle Methode delegieren einfach auf die enthaltenen Elemente. Vor-und Nachbearbeitung ist üblich, und gewisse Methoden müssen ganz anders implementiert werden.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch data-line-617">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Eine Menge von Objekten haben dasselbe Interface und müssen für viele Verantwortlichkeiten als Gesamtheit betrachtet werden.</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<p>Sie definieren ein Composite, das ebenfalls dasselbe Interface implementiert und Methoden an die darin enthalten Objekte weiterleitet.</p>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/Composite.png" alt="Composite"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-624">
+<h4 id="_state">4.9.11. State</h4>
+<div class="paragraph data-line-626">
+<p>Die Zustands-Klassen implementieren das Zustand-Interface. Die Zustands-Objekte sind nichts anderes als StrategyObjekte und können Singletons sein.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch data-line-628">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Das Verhalt eneines Objekts ist abhängig von seinem inneren Zustand.</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Das Objekt hat ein darin enthaltenes Zustandsobjekt.</p>
+</li>
+<li>
+<p>Alle Methoden, deren Verhalten vom Zustand abhängig sind, werden über das Zustandsobjekt geführt.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/State.png" alt="State"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-637">
+<h4 id="_visitor">4.9.12. Visitor</h4>
+<div class="paragraph data-line-639">
+<p>Oft werden Auswertungenan Visitor-Klassen delegiert. Widerspruch zum Information Expert, daher wichtige Methoden weiterhin direkt der Klasse hinzufügen.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch data-line-641">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Eine Klassenhierarchiesoll um (weniger wichtige) Verantwortlichkeiten erweitert werden, ohne dass viele neue Methoden hinzukommen.</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<p>Die Klassenhierarchie wird mit einer Visitor-Infrastruktur erweitert. Alle weiteren neuen Verantwortlichkeiten werden dann mit spezifischen Visitor-Klassen realisiert.</p>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/Visitor.png" alt="Visitor"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3 data-line-648">
+<h4 id="_facade">4.9.13. Facade</h4>
+<div class="paragraph data-line-650">
+<p>Eine Facadekapselt, im Gegensatz zum Adapter, ein Subsystem nicht vollständig ab. Es ist erlaubt, dass die Methoden der Facade Parameter und Rückgabewerte haben, die Bezug auf das Subsystem nehmen.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch data-line-652">
+<colgroup>
+<col style="width: 70%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist">
+<dl>
+<dt class="hdlist1">Problem</dt>
+<dd>
+<p>Sie setzen ein ziemlich kompliziertes Subsystemmit vielen Klassen ein. Wie können Sie seine Verwendung so vereinfachen, dass alle Team-Mitglieder es korrektund einfach verwenden können?</p>
+</dd>
+<dt class="hdlist1">Lösung</dt>
+<dd>
+<p>Eine Facade(Fassade) Klasse wird definiert, das eine vereinfachte Schnittstelle zum Subsystem anbietet und die meisten Anwendungen abdeckt.</p>
+</dd>
+</dl>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="img/Facade.png" alt="Facade"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2 data-line-659">
 <h3 id="_design_klassendiagram_dcd">4.10. Design-Klassendiagram (DCD)</h3>
 
 </div>
-<div class="sect2 data-line-561">
-<h3 id="_paketdiagram_schichten_entwurfsmuster">4.11. Paketdiagram &amp; Schichten-Entwurfsmuster</h3>
-
-</div>
-<div class="sect2 data-line-563">
-<h3 id="_interaktionsdiagramme">4.12. Interaktionsdiagramme</h3>
-
 </div>
 </div>
-</div>
-<div class="sect1 data-line-565">
+<div class="sect1 data-line-661">
 <h2 id="_implementation_refactoring_und_testing">5. Implementation, Refactoring und Testing</h2>
 <div class="sectionbody">
 
 </div>
 </div>
-<div class="sect1 data-line-567">
-<h2 id="_entwurf_mit_design_patterns">6. Entwurf mit Design Patterns</h2>
+<div class="sect1 data-line-663">
+<h2 id="_vertiefungen">6. Vertiefungen</h2>
 <div class="sectionbody">
+<div class="sect2 data-line-665">
+<h3 id="_verteilte_systeme">6.1. Verteilte Systeme</h3>
 
 </div>
-</div>
-<div class="sect1 data-line-569">
-<h2 id="_vertiefungen">7. Vertiefungen</h2>
-<div class="sectionbody">
-<div class="sect2 data-line-571">
-<h3 id="_verteilte_systeme">7.1. Verteilte Systeme</h3>
+<div class="sect2 data-line-667">
+<h3 id="_gui_architekturen">6.2. GUI-Architekturen</h3>
 
 </div>
-<div class="sect2 data-line-573">
-<h3 id="_gui_architekturen">7.2. GUI-Architekturen</h3>
+<div class="sect2 data-line-669">
+<h3 id="_persistenz">6.3. Persistenz</h3>
 
 </div>
-<div class="sect2 data-line-575">
-<h3 id="_persistenz">7.3. Persistenz</h3>
-
-</div>
-<div class="sect2 data-line-577">
-<h3 id="_framework_design">7.4. Framework Design</h3>
+<div class="sect2 data-line-671">
+<h3 id="_framework_design">6.4. Framework Design</h3>
 
 </div>
 </div>
@@ -2221,7 +2488,7 @@ Lösung
 <div id="footer">
 <div id="footer-text">
 Version 0.1<br>
-Last updated 2021-01-13 23:33:09 +0100
+Last updated 2021-01-14 00:05:00 +0100
 </div>
 </div>
 </body>

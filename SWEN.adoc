@@ -239,6 +239,11 @@ Formal ein UML Sequenzdiagram. Interaktionen der Akteure mit dem System
 |image:SSD_Beispiel.png[Beispiel Systemsequenzdiagram]
 |===
 
+NOTE: Bei der Beschreibung des Diagrams *nicht* schreiben was abgelesen werden kann! Stattdessen mit Patterns argumentieren!
+
+.Beispiel
+House ist der Facade-Controller und fungiert als Schnittstelle gegen aussen. Das einzelne Fenster ist der Information-Expert über sein Öffnungs-Zustand ist deshalb dafür verantwortlich das Fenster korrekt zu schliessen/öffnen
+
 ==== Systemoperationen
 
 [cols="65a,35a", frame="none", grid="none"]
@@ -480,7 +485,21 @@ image:ProtectedVariations.png[ProtectedVariations, 75%]
 
 === Design-Patterns (GoF-Patterns)
 
+Gang of Four Patterns
+
 image:DesignPatterns.png[Design Patterns, 50%]
+
+* Die Kombination von <<Singleton>>, <<Factory>> und <<Adapter>> wurde traditionell oft eingesetzt, um externe Dienste anzusprechen.
+* Anstelle von <<Singleton>> und <<Factory>> ist vermehrt <<Dependency Injection>> (DI) vorzuziehen.
+* Ein <<Proxy>> kapselt den Zugriff auf ein anderes Objekt vollständig ab und ist wie ein Stellvertreter.
+* <<Chain of Responsibility>> ist dann angebracht, wenn eine Aufgabe potentiell von mehreren Handlern übernommen werden kann, aber für eine konkrete Aufgabe im voraus nicht klar ist, welcher Handler wirklich zuständig ist.
+* Ein <<Decorator>> erweitert die Funktionalität eines Objekts (im Gegensatz zu Vererbung)
+* Ein <<Observer>> beobachtet das Observable. Da der Observer nur als Interface dem Observable bekannt ist, wird Low Coupling unterstützt. 
+* Eine <<Strategy>> ist ein Klasse, die genau einen Algorithmus enthält. Über Polymorphismus kann dann die Strategyeinfach ausgetauscht werden. 
+* Ein <<Composite>> beinhaltet Objekt, das dasselbe Interface wie das Composite implementieren. Viele Methoden werden dann auf diese Objekte weitergeleitet. 
+* Zustandsabhängiges Verhalten wird über ein <<State>> Objekt geleitet. 
+* Ein <<Visitor>> besucht Objekte, die dann die richtige Methode auf dem Visitor aufrufen.
+* Ein <<Facade>> bietet für ein Teilsystem eine vereinfachte Benutzung an. 
 
 ==== Adapter
 
@@ -493,7 +512,7 @@ Lösung:: Eine eigene AdapterKlasse wird dazwischengeschaltet.
 | image:Adapter.png[Adapter]
 |===
 
-==== Simple Factory
+==== Factory
 
 Oft ist die Erzeugung des neuen Objekts von irgendeiner Art von Konfigurationabhängig.
 [cols="7,3", frame="none", grid="none"]
@@ -556,15 +575,90 @@ Lösung::
 | image:ChainOfResponsibility.png[Chain Of Responsibility]
 |===
 
+==== Decorator
+
+In der Package java.io gibt es die Klasse FilterInputStream, die die Basisklasse für Decorators von InputStreamKlassen darstellt. Mit diesen Filter Klassen kann eine ganze Kette von InputStreamKlassen flexibel zusammengehängt werden, die dann eine komplexe Gesamtverantwortlichkeit bieten. 
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Ein Objekt (nicht ein ganze Klasse) soll mit zusätzlichen Verantwortlichkeiten versehen werden.
+Lösung:: Ein Decorator, der dieselbe Schnittstelle hat wie das ursprüngliche Objekt, wird vordieses geschaltet. Der Decorator kann nun jeden Methodenaufruf entweder selber bearbeiten, ihn an das ursprüngliche Objekt weiterleiten oder eine Mischung aus beidem machen.
+| image:Decorator.png[Decorator]
+|===
+
+==== Observer
+
+Oft wird dieses Pattern auch «Publish-Subscribe»genannt. Observable kennt nur Observer, aber nicht den wahren Typ Concrete Observer. 2 Phasen: Zuerst die Registierungvom Observer, dann die Benachrichtigungen vom Observable.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Ein Objektsoll ein anderes Objektbenachrichtigen, ohnedass es den genauen Typ des Empfängers kennt.
+Lösung:: Ein Interface wird definiert, das nur dazu dient, ein Objekt über eine Änderung zu informieren. Dieses Interface wird vom «Observer» implementiert. Das «Observable» Objekt benachrichtigt alle registrierten «Observer» über eine Änderung.
+| image:Observable.png[Observable]
+|===
+
+==== Strategy
+
+Das Interface hat nur eine einzige Methode. Als Parameter müssen alle Datenübergeben werden, die der Algorithmus benötigt. Dieser Parameter wird üblicherweise «context» benannt.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Ein Algorithmus soll einfach austauschbar sein.
+Lösung:: 
+* Den Algorithmus in eine eigeneKlasse verschieben, die nur eineMethodemit diesem Algorithmus hat.
+* Ein Interfacefür diese Klasse definieren, das von alternativen Algorithmen implementiert werden muss.
+| image:Strategy.png[Strategy]
+|===
+
+==== Composite
+
+Oft ist die hierarchische Struktur vom Fachgebiether gegeben. Nicht alle Methode delegieren einfach auf die enthaltenen Elemente. Vor-und Nachbearbeitung ist üblich, und gewisse Methoden müssen ganz anders implementiert werden.  
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Eine Menge von Objekten haben dasselbe Interface und müssen für viele Verantwortlichkeiten als Gesamtheit betrachtet werden. 
+Lösung:: Sie definieren ein Composite, das ebenfalls dasselbe Interface implementiert und Methoden an die darin enthalten Objekte weiterleitet.
+| image:Composite.png[Composite]
+|===
+
+==== State
+
+Die Zustands-Klassen implementieren das Zustand-Interface. Die Zustands-Objekte sind nichts anderes als StrategyObjekte und können Singletons sein.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Das Verhalt eneines Objekts ist abhängig von seinem inneren Zustand.
+Lösung:: 
+* Das Objekt hat ein darin enthaltenes Zustandsobjekt.
+* Alle Methoden, deren Verhalten vom Zustand abhängig sind, werden über das Zustandsobjekt geführt.
+| image:State.png[State]
+|===
+
+==== Visitor
+
+Oft werden Auswertungenan Visitor-Klassen delegiert. Widerspruch zum Information Expert, daher wichtige Methoden weiterhin direkt der Klasse hinzufügen. 
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Eine Klassenhierarchiesoll um (weniger wichtige) Verantwortlichkeiten erweitert werden, ohne dass viele neue Methoden hinzukommen. 
+Lösung:: Die Klassenhierarchie wird mit einer Visitor-Infrastruktur erweitert. Alle weiteren neuen Verantwortlichkeiten werden dann mit spezifischen Visitor-Klassen realisiert.
+| image:Visitor.png[Visitor]
+|===
+
+==== Facade
+
+Eine Facadekapselt, im Gegensatz zum Adapter, ein Subsystem nicht vollständig ab. Es ist erlaubt, dass die Methoden der Facade Parameter und Rückgabewerte haben, die Bezug auf das Subsystem nehmen.
+[cols="7,3", frame="none", grid="none"]
+|===
+a|
+Problem:: Sie setzen ein ziemlich kompliziertes Subsystemmit vielen Klassen ein. Wie können Sie seine Verwendung so vereinfachen, dass alle Team-Mitglieder es korrektund einfach verwenden können?
+Lösung:: Eine Facade(Fassade) Klasse wird definiert, das eine vereinfachte Schnittstelle zum Subsystem anbietet und die meisten Anwendungen abdeckt.
+| image:Facade.png[Facade]
+|===
+
 === Design-Klassendiagram (DCD)
 
-=== Paketdiagram & Schichten-Entwurfsmuster
-
-=== Interaktionsdiagramme
-
 == Implementation, Refactoring und Testing
-
-== Entwurf mit Design Patterns
 
 == Vertiefungen
 
