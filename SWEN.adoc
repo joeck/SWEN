@@ -273,6 +273,8 @@ Wann Operation Contracts?::
 
 === Domänenmodell
 
+image:Assozationen.png[Assozationen, 300]
+
 [cols="4a,3a,3a"]
 |===
 |UML Klassendiagram |Aggregation | Komposition
@@ -282,9 +284,14 @@ Wann Operation Contracts?::
 |image:Komposition.png[Komposition]
 |===
 
+---
+
+.Domänenmodell
 image:Domanenmodel.png[Domänenmodel, 75%]
 
+---
 
+.Tipps
 [cols="2*a"]
 |===
 |
@@ -658,7 +665,79 @@ Lösung:: Eine Facade(Fassade) Klasse wird definiert, das eine vereinfachte Schn
 
 === Design-Klassendiagram (DCD)
 
+==== Sichtbarkeit von Attributen
+
+image:sichtbarkeit.png[Sichtbarkeit, 250]
+
+==== Assoziationen
+
+|===
+|Gerichtete Assoziation | Vererbung
+
+|image:gerichteteAssoziation.png[Gerichtete Assoziation] | image:Vererbung.png[Vererbung]
+
+h|Realisierung h| Aggregation/Komposition
+
+|image:Realisierung.png[Realisierung, 300] |image:AggregationKomposition.png[Aggregation/Komposition]
+
+|===
+
+NOTE: Immer gerichtete Pfeile
+
 == Implementation, Refactoring und Testing
+
+=== Testing
+
+* Funktionaler Test (Black-Box Verfahren)
+* Nicht funktionaler Test (Lasttestetc.) 
+* Strukturbezogener Test (White-Box Verfahren)
+* Änderungsbezogener Test (Regressionstest etc.)
+
+Äquivalenzklassen:: Gleiches Verhalten mit unterschiedlichen Eingaben (verschiedene Klassen beim Testen testen)
+
+Unit-Test:: Kleinste Einheit testen. Vom Programmierer entwickelt.
+
+Integrationstest:: Black-Box-Test mit zusätzlichem Wissen über Internas. Eine Klasse wird im Anwendungskontext eingesetzt (keine Mockups). Tested typischerweise ein ganzes Subsystem.
+
+Systemtest:: Black-Box-Test über das ganze System/gesamte Anwendungslogik.
+
+Abnahmetest:: Black-Box-Test nach der Auslieferung vom Kunden getestet. Orientiert sich an den Kundenanforderungen.
+
+Regressionstest:: Automatischer Test nach Quellcode änderung, refactoring oder weiterntwicklung.
+
+==== Merkmale
+
+[cols="2*a"]
+|===
+a| 
+*Was wird getestet?*
+
+* Eine Einheit/Klasse (Unit Test)
+* Zusammenarbeit mehrerer Klasen
+* die gesamte Applikationslogik (ohne UI)
+* die gesamte Anwendung (über UI)
+
+*Wie wird getestet?*
+
+* Dynamisch: Testling wird ausgeführt
+** Black-Box Test
+** White-Box Test
+* Statisch: Quelltext wird analysiert
+** Walkthrough, Review, Inspektion
+
+a| 
+*Wann wird der Test geschrieben?*
+
+* Vor der Implementation (TDD)
+* Nach der Implementation
+
+*Wer testet?*
+
+* Entwickler
+* Tester/Qualitätssicherung
+* Kunde/Endbenutzer
+
+|===
 
 == Vertiefungen
 
