@@ -684,6 +684,11 @@ h|Realisierung h| Aggregation/Komposition
 
 NOTE: Immer gerichtete Pfeile
 
+---
+
+.Beispiel DCD
+image:DCD.png[DCD]
+
 == Implementation, Refactoring und Testing
 
 === Testing
