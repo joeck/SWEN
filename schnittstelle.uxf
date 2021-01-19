@@ -1,0 +1,27 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>350</x><y>260</y><w>140</w><h>80</h></coordinates><panel_attributes>Message
+--
+- text: String
+- date: timestamp
+- status: enum
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>290</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>250</y><w>190</w><h>80</h></coordinates><panel_attributes>User
+--
+- name: String
+- memberSince: timestamp
+- chats: List&lt;Chat&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>250</y><w>190</w><h>80</h></coordinates><panel_attributes>Chat
+--
+- name: String
+- members: List&lt;User&gt;
+- messages: List&lt;Message&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>280</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>300</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>390</y><w>140</w><h>80</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+MessageChecker
+--
++ checkMessage(String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>540</y><w>170</w><h>80</h></coordinates><panel_attributes>MessageCheckerAdapter
+--
++ checkMessage(String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>460</y><w>90</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.
+</panel_attributes><additional_attributes>70;10;10;80</additional_attributes></element><element><id>UMLNote</id><coordinates><x>630</x><y>660</y><w>140</w><h>70</h></coordinates><panel_attributes>Adapter</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>610</y><w>110</w><h>110</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;90;90;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>530</y><w>210</w><h>90</h></coordinates><panel_attributes>MessageCheckServiceAdaptee
+--
++ checkMessage(String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>570</y><w>230</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>330</y><w>180</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>160;80;10;80;10;10</additional_attributes></element></diagram>
